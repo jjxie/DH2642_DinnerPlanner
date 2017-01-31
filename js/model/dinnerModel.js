@@ -3,46 +3,70 @@ var DinnerModel = function() {
  
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
+	
+	//Stores the number of guests
+	var numberOfGuests = 0;
+	//Stores the id of each dish in selected menu
+	var selectedMenuById = [];
 
-
+	//Writes the number of guests
 	this.setNumberOfGuests = function(num) {
-		//TODO Lab 2
+		numberOfGuests = num;
 	}
 
-	// should return 
+	//Returns the number of guests
 	this.getNumberOfGuests = function() {
-		//TODO Lab 2
+		return numberOfGuests;
 	}
 
-	//Returns the dish that is on the menu for selected type 
+	//Returns the dish that is on the menu for selected type // what's the meaning ?
 	this.getSelectedDish = function(type) {
-		//TODO Lab 2
+		return dishes.filter(function(dish) { 
+			return dish.type == type;
+	});	
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		//TODO Lab 2
+		var fullMenu = [];
+		for (key in selectedMenuById){
+			fullMenu.push(DinnerModel.getDish(selectedMenuById[key]));
+		}
+		return fullMenu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-		//TODO Lab 2
-	}
-
+		var allIngredients =[];
+		var fullMenu = DinnerModel.getFullMenu();
+  		for (i = 0; i < fullMenu.length; i++) { 
+   			for (j = 0; j < fullMenu[i]["ingredients"].length; j++){
+    			allIngredients.push(fullMenu[i]["ingredients"][j]);
+			}
+   		}
+    	return allIngredients;
+ 	}
+	
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		//TODO Lab 2
+		var singleMenuPrice = 0;
+		var allIngredients = DinnerModel.getAllIngredients();
+		for (key in allIngredients){
+			singleMenuPrice += allIngredients[key]["price"] * allIngredients[key]["quantity"]; 
+		}
+		return singleMenuPrice * numberOfGuests;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//TODO Lab 2 
+		selectedMenuById.push(id);
+		selectedMenuById.sort();
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 2
+		selectedMenuById.splice(selectedMenuById.indexOf(id),1);
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
