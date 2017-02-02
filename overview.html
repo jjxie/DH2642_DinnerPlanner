@@ -10,69 +10,74 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
   </head>
-  <body style="background-image: url('bg.jpg'); ">
+  <body style="background-image: url('bg.jpg'); background-size: cover;">
 	<div class="container-fluid" >
 		
 		<!-- heading panel -->
-		<div id="headingPanel"  class="jumbotron" style="background-color: rgba(12,2,2,0.4); " >
-			<span style="font-size: xx-large;">HOMELETTE </span>
-			<span><em>From the best chefs in the world directly into your kitchen</em></span>
+		<div id="headingPanel"  class="col-md-12" style="background-color: rgba(48,48,48,0.9);">
+			<div class="col-md-3 panel-body text-center" ><h1 style="color: white;">HOMELETTE</h1></div>
+			<div class="col-md-9 panel-body"><br></br><p><em style="color: white;">From the best chefs in the world directly into your kitchen</em></p></div>
 		</div>
 
 		<!-- overview panel -->
-		<div id="preparationPanel" >
+		<div id="overviewPanel" >
         	<!-- banner -->
-        	<div id="banner" class="col-md-12" style="background-color: rgba(252,159,77,1);">
-	        	<div class="col-md-9" style="font-size: xx-large;">
+        	<div id="bannerView" class="panel-body" style="background-color:rgba(255,255,255,0.8);">
+	        	<div class="col-md-9 panel-body" style="font-size: xx-large;">
 	        		<span>My Dinner: </span>
 	        		<span id = "numberOfGuests">helloworld</span>
 	        		<span> people</span>
 	        	</div>
-	        	<div class="col-md-3" style="text-align: right;">
-	        		<a href="selectMenu.html" class="btn pa" role="button" style="background-color: rgba(252,252,77,1); font-size:large; color:black; " >Create new dinner</a>
+	        	<div class="col-md-3 panel-body" style="text-align: right;">
+	        		<a href="selectMenu.html" class="btn btn-warning" role="button">Create new dinner</a>
 	        	</div>
-	        </div>
+	        	<div class="col-md-12">
+	        		<hr style="border: 1px solid #aaa;">
+	        	</div>
+        	</div>
+
 	        <!-- overview -->
-	        <div class="col-md-12">
-	        	<div class="col-md-3">
+	        <div class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8);">
+	        	<div class="col-md-3 panel-body">
 	        		<br></br>
 	        	</div>
 	        	<!-- menu -->
-	        	<div class="col-md-2">
+	        	<div class="col-md-2 panel-body">
 	        		<img src="images/toast.jpg" class="img-thumbnail">
 	        		<div id="selectedName1" style="font-size: x-large; text-align: middle;"> Lasagne</div>
 	        		<div style="text-align: right;">
-	        			<span id="selectedPrice1">a</span>
-	        			<span> SEK</span>
+	        			<span id="selectedPrice1" style="font-size: large;">a</span>
+	        			<span style="font-size: large;"> SEK</span>
 	        		</div>
 	        	</div>
-	        	<div class="col-md-2">
+	        	<div class="col-md-2 panel-body">
 	        		<img src="images/toast.jpg" class="img-thumbnail">
 	        		<div id="selectedName1" style="font-size: x-large; text-align: middle;"> Lasagne</div>
 	        		<div style="text-align: right;">
-	        			<span id="selectedPrice2">b</span>
-	        			<span> SEK</span>
+	        			<span id="selectedPrice2" style="font-size: large;">b</span>
+	        			<span style="font-size: large;"> SEK</span>
 	        		</div>
 	        	</div>
-	        	<div class="col-md-2">
+	        	<div class="col-md-2 panel-body">
 	        		<img src="images/toast.jpg" class="img-thumbnail">
 	        		<div id="selectedName1" style="font-size: x-large; text-align: middle;"> Lasagne</div>
 	        		<div style="text-align: right;">
-	        			<span id="selectedPrice3">c</span>
-	        			<span> SEK</span>
+	        			<span id="selectedPrice3" style="font-size: large;">c</span>
+	        			<span style="font-size: large;"> SEK</span>
 	        		</div>
 	        	</div>
 	        	<!-- summary -->
-	        	<div class="col-md-3">
+	        	<div class="col-md-2 panel-body">
 	        		<div style="font-size: x-large;">Total:</div>
 	        		<div style="text-align: right;">
-	        			<span id="totalPrice"> a + b + c </span>
-	        			<span> SEK</span>
+	        			<span id="totalPrice" style="font-size: large;"> a + b + c </span>
+	        			<span style="font-size: large;"> SEK</span>
 	        		</div>
 	        	</div>
-	        	<div class="col-md-12" style="text-align: center;">
-	        		<br></br>
-	        		<a href="selectMenu.html" class="btn pa" role="button" style="background-color: rgba(252,252,77,1); font-size:large; color:black; " >Print Full Recipe</a>
+
+	        	<div class="col-md-12 panel-body" style="text-align: center;">
+	        		<hr style="border: 1px solid #aaa;">
+	        		<a href="selectMenu.html" class="btn btn-warning" role="button" >Print Full Recipe</a>
 	        	</div>
 			</div>
 		</div>
