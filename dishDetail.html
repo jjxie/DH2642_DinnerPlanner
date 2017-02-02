@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Select dish</title>
+    <title>Detail of the Dish</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -20,8 +20,7 @@
 
 
         
-		<div id="contentPanel" class="container-fluid panel-group">
-			
+		<div id="detailContentPanel" class="container-fluid panel-group">
 			<!--left content panel-->
         	<div id="myDinnerPanel" class="col-md-3 panel-body" style="background-color: rgba(247,232,218,0.5);">
 	        	<h4>My Dinner</h4>
@@ -74,34 +73,81 @@
 		</div> 
 
 			<!--right content panel-->
-			<div id="dishesPanel" class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.5);">
-	        	<div class="col-md-12 panel-header">
-	        		<h4>Select Dishes</h4>
-	        	</div>
-	        	<div id="search">
-		        	<div class="col-xs-4 panel-body">
-		        		<input id="searchBox" class="form-control" type="text" placeholder="Enter key words to search">
+			<div id="detailDishesPanel" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.5);">
+
+				<!--right content panel, left part-->
+		        <div class="col-md-6 panel-group">	
+		        	<div class="col-md-6 panel-header">
+		        		<h4>LASAGNE</h4>
 		        	</div>
-		        	<div class="col-xs-4 panel-body"><button id="searchButton" type="button" class="btn btn-default">Search</button>
+		        	<div id="selectedDishDetail" class="col-md-12 panel-body">
+		        		<img src="images/bakedbrie.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
 		        	</div>
+		        	<div class="col-md-6 panel-body">
+		        		description sddsdf
 		        	</div>
-		        	<div class="col-xs-4 panel-body">
-						<select class="form-control">
-						  <option>All Dishes</option>
-						  <option>Main</option>
-						  <option>Starter</option>
-						  <option>Dessert</option>
-						</select>
+		        	<div class="col-xs-12 panel-body">
+		        		<button id="backToMenuButton" type="button" class="btn btn-warning">Back to Select Dish</button>
 		        	</div>
-	        
-	        <div id="Menu" class="panel-body" >
-	        	<div id="Dish1" class="col-md-3 panel-body"><img src="images/bakedbrie.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"></div>
-	        	<div id="Dish2" class="col-md-3 panel-body"><img src="images/bakedbrie.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"></div>
-	        	<div id="Dish3" class="col-md-3 panel-body"><img src="images/bakedbrie.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"></div>
-	        	<div id="Dish4" class="col-md-3 panel-body"><img src="images/bakedbrie.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"></div>
-	        	<div id="Dish5" class="col-md-3 panel-body"><img src="images/bakedbrie.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"></div>
-			</div>
-			</div>
+		        </div>
+ 
+ 				<!--right content panel, right part-->
+		         <div class="col-md-6 panel-group" style="background-color: rgba(252,159,77,0.5);">	
+		        	<div class="col-md-12 panel-header">
+		        		<h4>Ingredients for 4 people</h4>
+		        	</div>
+		        	<div>
+		        		<table class="table">
+						    <thead>
+						      <tr>
+						        <th class="col-md-2"></th>
+						        <th class="col-md-6"></th>
+						        <th class="col-md-2"></th>
+						        <th class="col-md-2"></th>
+						      </tr>
+						    </thead>
+						    <tbody>
+						      <tr>
+						        <td>2 tbsp</td>
+						        <td>olive oil olive oil olive oil</td>
+						        <td>SEK</td>
+						        <td>0.20</td>
+						      </tr>
+						      <tr>
+						        <td>2 tbsp</td>
+						        <td>olive oil</td>
+						        <td>SEK</td>
+						        <td>0.20</td>
+						      </tr>
+						    </tbody>
+						  </table>
+		        	</div>
+
+					<div>
+						<table class="table">
+						    <thead>
+						      <tr>
+						        <th class="col-md-8"></th>
+						        <th class="col-md-2"></th>
+						        <th class="col-md-2"></th>
+						      </tr>
+						      <tbody>
+						      <tr>
+						        <td><button id="confirmDishButton" type="button" class="btn btn-warning">Confirm Dish</button></td>
+						        <td>SEK</td>
+						        <td>77.20</td>
+						      </tr>
+						    </tbody>
+						    </thead>
+						  </table>
+					</div>
+		        </div>
+
+		        <div id="dishPreparation" class="col-md-12 panel-body ">
+		        	<div class="col-md-12 panel-header"><h4>PREPARATION</h4></div>
+		        	<div id="dishPreparationDetail"class="panel-body">dsfdsfds</div>
+		        </div>
+		    </div> 
 		</div>
 
     <!-- jQuery -->
