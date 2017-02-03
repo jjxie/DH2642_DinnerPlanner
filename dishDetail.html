@@ -1,168 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Detail of the Dish</title>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Detail of the Dish</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
-  </head>
-  <body style="background-image: url('bg.jpg'); background-size: cover;">
+</head>
+
+<body style="background-image: url('bg.jpg'); background-size: cover;">
+
+	<!-- heading panel -->
 	<div class="container-fluid " >
-		<div id="headingPanel"  class="col-md-12" style="background-color: rgba(252,159,77,0.5);">
-			<div class="col-md-3 panel-body text-center"><h1>HOMELETTE</h1></div>
-			<div class="col-md-9 panel-body"><br></br><p><em>From the best chefs in the world directly into your kitchen</em></p></div>
+		<div id="headingPanel"  class="col-md-12" style="background-color: rgba(48,48,48,0.9);">
+			<div class="col-md-3 panel-body text-center" ><h1 style="color: white;">HOMELETTE</h1></div>
+			<div class="col-md-9 panel-body"><br></br><p><em style="color: white;">From the best chefs in the world directly into your kitchen</em></p></div>
 		</div>
 	</div>
 
 
-        
-		<div id="detailContentPanel" class="container-fluid panel-group">
-			<!--left content panel-->
-        	<div id="myDinnerPanel" class="col-md-3 panel-body" style="background-color: rgba(247,232,218,0.7);">
-	        	<h4>My Dinner</h4>
-	        	<div class="panel-body">
-	        		Number of Guest(s): <span><input id="guestNumber" type="number" name="quantity" min="1" max="500"></span>
-	        	</div>
-	        <div id="selectedDish" class="panel-header">
+	<div class="container-fluid panel-group">
+
+		<!-- list of selected menu on the left -->
+		<div id="menuListView" class="col-md-3 panel-body" style="background-color: rgba(247,232,218,0.7);">
+			<h4>My Dinner</h4>
+			<div class="panel-body">
+				Number of Guest(s): <span><input id="guestNumber" type="number" name="quantity" min="1" max="500"></span>
+			</div>
+			<div id="selectedDish" class="panel-header">
 				<table class="table table-striped">
-				    <thead>
-				      <tr>
-				        <th class="col-md-5">Dishe Name</th>
-				        <th class="col-md-2">Cost</th>
-				      </tr>
-				    </thead>
-				    <tbody>
-				      <tr>
-				        <td>John</td>
-				        <td>11.44</td>
-				      </tr>
-				      <tr>
-				        <td>Mary</td>
-				        <td>22.00</td>
-				      </tr>
-				      <tr>
-				        <td>July</td>
-				        <td>33.88</td>
-				      </tr>
-				    </tbody>
-				  </table>
+					<thead>
+						<tr>
+							<th class="col-md-5">Dishe Name</th>
+							<th class="col-md-2">Cost</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>John</td>
+							<td>11.44</td>
+						</tr>
+						<tr>
+							<td>Mary</td>
+							<td>22.00</td>
+						</tr>
+						<tr>
+							<td>July</td>
+							<td>33.88</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div id="totalCost" class="panel-header">
 				<table class="table">
-				    <thead>
-				      <tr>
-				        <th class="col-md-8"></th>
-				        <th class="col-md-4"></th>
-				      </tr>
-				    </thead>
-				    <tbody>
-				      <tr>
-				        <td style="text-align: right;">SEK</td>
-				        <td>888.00</td>
-				      </tr>
-				    </tbody>
-				  </table>
+					<thead>
+						<tr>
+							<th class="col-md-8"></th>
+							<th class="col-md-4"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="text-align: right;">SEK</td>
+							<td>888.00</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div class="container-fluid">
-			<button id="confirmButton" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</button>
+				<button id="confirmButton" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</button>
 			</div>
 		</div> 
 
-			<!--right content panel-->
-			<div id="detailDishesPanel" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8);">
+		<!--detailed info of a dish on the right-->
+		<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8);">
 
-				<!--right content panel, left part-->
-		        <div class="col-md-6 panel-group">	
-		        	<div class="col-md-6 panel-header">
-		        		<h4>LASAGNE</h4>
-		        	</div>
-		        	<div id="selectedDishDetail" class="col-md-12 panel-body">
-		        		<img src="images/bakedbrie.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
-		        	</div>
-		        	<div class="col-md-6 panel-body">
-		        		description sddsdf
-		        	</div>
-		        	<div class="col-xs-12 panel-body">
-		        		<button id="backToMenuButton" type="button" class="btn btn-warning">Back to Select Dish</button>
-		        	</div>
-		        </div>
- 
- 				<!--right content panel, right part-->
-		         <div class="col-md-6 panel-group" style="background-color: rgba(252,159,77,0.5);">	
-		        	<div class="col-md-12 panel-header">
-		        		<h4>Ingredients for 4 people</h4>
-		        	</div>
-		        	<div>
-		        		<table class="table">
-						    <thead>
-						      <tr>
-						        <th class="col-md-2"></th>
-						        <th class="col-md-6"></th>
-						        <th class="col-md-2"></th>
-						        <th class="col-md-2"></th>
-						      </tr>
-						    </thead>
-						    <tbody>
-						      <tr>
-						        <td>2 tbsp</td>
-						        <td>olive oil olive oil olive oil</td>
-						        <td>SEK</td>
-						        <td>0.20</td>
-						      </tr>
-						      <tr>
-						        <td>2 tbsp</td>
-						        <td>olive oil</td>
-						        <td>SEK</td>
-						        <td>0.20</td>
-						      </tr>
-						    </tbody>
-						  </table>
-		        	</div>
+			<!--thumbnail-->
+			<div class="col-md-6 panel-group">	
+				<div class="col-md-6 panel-header">
+					<h4>LASAGNE</h4>
+				</div>
+				<div id="selectedDishDetail" class="col-md-12 panel-body">
+					<img src="images/bakedbrie.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+				</div>
+				<div class="col-md-6 panel-body">
+					description sddsdf
+				</div>
+				<div class="col-xs-12 panel-body">
+					<button id="backToMenuButton" type="button" class="btn btn-warning">Back to Select Dish</button>
+				</div>
+			</div>
 
-					<div>
-						<table class="table">
-						    <thead>
-						      <tr>
-						        <th class="col-md-8"></th>
-						        <th class="col-md-2"></th>
-						        <th class="col-md-2"></th>
-						      </tr>
-						      <tbody>
-						      <tr>
-						        <td><button id="confirmDishButton" type="button" class="btn btn-warning">Confirm Dish</button></td>
-						        <td>SEK</td>
-						        <td>77.20</td>
-						      </tr>
-						    </tbody>
-						    </thead>
-						  </table>
-					</div>
-		        </div>
+			<!--Ingredient facts-->
+			<div class="col-md-6 panel-group" style="background-color: rgba(252,159,77,0.5);">	
+				<div class="col-md-12 panel-header">
+					<h4>Ingredients for 4 people</h4>
+				</div>
+				<div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="col-md-2"></th>
+								<th class="col-md-6"></th>
+								<th class="col-md-2"></th>
+								<th class="col-md-2"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2 tbsp</td>
+								<td>olive oil olive oil olive oil</td>
+								<td>SEK</td>
+								<td>0.20</td>
+							</tr>
+							<tr>
+								<td>2 tbsp</td>
+								<td>olive oil</td>
+								<td>SEK</td>
+								<td>0.20</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-		        <div id="dishPreparation" class="col-md-12 panel-body ">
-		        	<div class="col-md-12 panel-header"><h4>PREPARATION</h4></div>
-		        	<div id="dishPreparationDetail"class="panel-body">dsfdsfds</div>
-		        </div>
-		    </div> 
-		</div>
+				<div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="col-md-8"></th>
+								<th class="col-md-2"></th>
+								<th class="col-md-2"></th>
+							</tr>
+							<tbody>
+								<tr>
+									<td><button id="confirmDishButton" type="button" class="btn btn-warning">Confirm Dish</button></td>
+									<td>SEK</td>
+									<td>77.20</td>
+								</tr>
+							</tbody>
+						</thead>
+					</table>
+				</div>
+			</div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+			<!-- preparation -->
+			<div id="dishPreparation" class="col-md-12 panel-body ">
+				<div class="col-md-12 panel-header"><h4>PREPARATION</h4></div>
+				<div id="dishPreparationDetail"class="panel-body">dsfdsfds</div>
+			</div>
+		</div> 
+	</div>
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
+	<!-- Model -->
 	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/exampleView.js"></script>
+	<!-- Views -->
+	<script src="js/view/homeView.js"></script>
+	<script src="js/view/menuListView.js"></script>
+	<script src="js/view/menuThumbnailView.js"></script>
+	<script src="js/view/dishDetailView.js"></script>
+	<script src="js/view/dinnerFactsBannerView.js"></script>
+	<script src="js/view/menuSummaryView.js"></script>
+	<script src="js/view/preparationView.js"></script>
+	<!-- Controllers -->
 	<script src="js/view/exampleViewController.js"></script>
-  	<!-- Browser-sync scripts -->
+
+	<!-- Browser-sync scripts -->
   	<script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.17.0'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-  </body>
-</html>
+  		document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.17.0'><\/script>".replace("HOST", location.hostname));
+  		//]]></script>
+  	</body>
+  	</html>
