@@ -12,4 +12,5 @@ $(function() {
 	var preparationView = new PreparationView($("#preparationView"), model);
 
 	//Controller creation
+	
 });

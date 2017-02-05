@@ -53,7 +53,7 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
-		var fullMenu = DinnerModel.getFullMenu();
+		var fullMenu = this.getFullMenu();
 		return fullMenu.filter(function(dish) { 
 			return dish.type == type;
 		});	
@@ -68,7 +68,7 @@ var DinnerModel = function() {
 
 	//Returns the single price of dish
 	this.getSinglePrice = function(id){
-		var ingredients = DinnerModel.getIngredients();
+		var ingredients = this.getIngredients();
 		var singlePrice = 0;
 		for (key in ingredients){
 			singlePrice += ingredients[key]["price"] * ingredients[key]["quantity"]; 
@@ -80,7 +80,7 @@ var DinnerModel = function() {
 	this.getFullMenu = function() {
 		var fullMenu = [];
 		for (key in selectedMenuById){
-			fullMenu.push(DinnerModel.getDish(selectedMenuById[key]));
+			fullMenu.push(this.getDish(selectedMenuById[key]));
 		}
 		return fullMenu;
 	}
@@ -89,7 +89,7 @@ var DinnerModel = function() {
 	this.getAllIngredients = function() {
 		var allIngredients =[];
 		for (key in selectedMenuById){
-			allIngredients.push(DinnerModel.getIngredients(selectedMenuById[key]));
+			allIngredients.push(this.getIngredients(selectedMenuById[key]));
 		}
 		return allIngredients;
 	}
@@ -98,7 +98,7 @@ var DinnerModel = function() {
 	this.getTotalMenuPrice = function() {
 		var singleMenuPrice = 0;
 		for (key in selectedMenuById){
-			singleMenuPrice += DinnerModel.getSinglePrice(selectedMenuById[key]); 
+			singleMenuPrice += this.getSinglePrice(selectedMenuById[key]); 
 		}
 		return singleMenuPrice * numberOfGuests;
 	}
