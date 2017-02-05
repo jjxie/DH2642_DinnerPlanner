@@ -8,7 +8,7 @@ var DinnerModel = function() {
 	var numberOfGuests = 8;
 
 	//Stores the id of each dish in selected menu
-	var selectedMenuById = [2,3,100];
+	var selectedMenuById = [2, 3, 100, 201, 202];
 
 	//Writes the number of guests
 	this.setNumberOfGuests = function(num) {
@@ -43,7 +43,7 @@ var DinnerModel = function() {
 	}
 
 	//function that returns a dish of specific ID
-	this.getDish = function (id) {
+	this.getDish = function(id) {
 		for(key in dishes){
 			if(dishes[key].id == id) {
 				return dishes[key];
@@ -60,13 +60,13 @@ var DinnerModel = function() {
 	}
 	
 	//Returns the ingredients of one dish
-	this.getIngredients = function(id){
+	this.getIngredients = function(id) {
 		var theDish = this.getDish(id);
 		return theDish.ingredients;
 	}
 
 	//Returns the single price of dish
-	this.getSinglePrice = function(id){
+	this.getSinglePrice = function(id) {
 		var ingredients = this.getIngredients(id);
 		var singlePrice = 0;
 		for (key in ingredients){
@@ -76,7 +76,7 @@ var DinnerModel = function() {
 	}
 
 	//Returns all the dishes on the menu in id
-	this.getFullMenuInId = function(){
+	this.getFullMenuInId = function() {
 		return selectedMenuById;
 	}
 
