@@ -5,10 +5,10 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 	
 	//Stores the number of guests
-	var numberOfGuests = 22;
+	var numberOfGuests = 8;
 
 	//Stores the id of each dish in selected menu
-	var selectedMenuById = [];
+	var selectedMenuById = [2,3,100];
 
 	//Writes the number of guests
 	this.setNumberOfGuests = function(num) {
@@ -61,22 +61,26 @@ var DinnerModel = function() {
 	
 	//Returns the ingredients of one dish
 	this.getIngredients = function(id){
-		var thisDish = getDish(id);
-		return thisDish["ingredients"];
-
+		var theDish = this.getDish(id);
+		return theDish.ingredients;
 	}
 
 	//Returns the single price of dish
 	this.getSinglePrice = function(id){
-		var ingredients = this.getIngredients();
+		var ingredients = this.getIngredients(id);
 		var singlePrice = 0;
 		for (key in ingredients){
-			singlePrice += ingredients[key]["price"] * ingredients[key]["quantity"]; 
+			singlePrice += ingredients[key]["price"]; 
 		}
 		return singlePrice;
 	}
 
-	//Returns all the dishes on the menu.
+	//Returns all the dishes on the menu in id
+	this.getFullMenuInId = function(){
+		return selectedMenuById;
+	}
+
+	//Returns all the dishes on the menu
 	this.getFullMenu = function() {
 		var fullMenu = [];
 		for (key in selectedMenuById){

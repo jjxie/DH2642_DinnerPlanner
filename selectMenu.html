@@ -29,7 +29,7 @@
 			<h4>My Dinner</h4>
 			
 			<div class="panel-body">
-				Number of Guest(s): <span><input id="guestNumber" type="number" name="quantity" min="1" max="500"></span>
+				<span>Number of Guest(s): </span><span><input id="guestNumberInput" type="number" name="quantity" min="0" max="500"></span>
 			</div>
 			
 			<div id="selectedDish" class="panel-header">
@@ -41,18 +41,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>John</td>
-							<td>11.44</td>
-						</tr>
-						<tr>
-							<td>Mary</td>
-							<td>22.00</td>
-						</tr>
-						<tr>
-							<td>July</td>
-							<td>33.88</td>
-						</tr>
+
 					</tbody>
 				</table>
 			</div>
@@ -68,7 +57,7 @@
 					<tbody>
 						<tr>
 							<td style="text-align: right;">SEK</td>
-							<td>888.00</td>
+							<td id="totalMenuPrice"> </td>
 						</tr>
 					</tbody>
 				</table>
