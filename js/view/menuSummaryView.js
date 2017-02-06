@@ -3,27 +3,37 @@ var MenuSummaryView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
-  	
-  	this.numberOfGuests = container.find('#numberOfGuestsData');
-  	
-  	this.numberOfGuests.html(model.getNumberOfGuests());
-  	
-	// this.numberOfGuests = container.find("#guestNumber");
-	// this.plusButton = container.find("#plusGuest");
-	// this.minusButton = container.find("#minusGuest");
-	
-	// this.numberOfGuests.val(model.getNumberOfGuests());
-
 	// dynamicly creates rows 
 
-	// var tableBody = container.find('#selectedDish tbody');
-	// var tr = $('<tr>');
-	// var tdName = $('<td>');
-	// tdName.html('Something');
-	// var tdPrice = $('<td>');
-	// tdPrice.html(5);
-	// tr.append(tdName);
-	// tr.append(tdPrice);
-	// tableBody.append(tr);
-}
+	//Where the menu summary locates.
+	this.divAll = container.find('#menuSummary');
+	var menu = model.getFullMenuInId();  //should be search results
+	var imgPath = 'images/';
+	for (i = 0; i < menu.length; i++){		
+		var dish = model.getDish(menu[i]);
+		var div = $('<div class="col-md-3 panel-body">');
+		var divPanel = $('<div class="panel">');
 
+		var divImage = $('<div class="panel-body">');
+		jQuery('<img/>', {
+			src: imgPath.concat(dish.image),
+			alt: dish.name,
+			class: "img-responsive",
+			style: "width:100%; height:200px",
+		}).appendTo(divImage);
+		divPanel.append(divImage);
+
+		var dishName = $('<div class="panel-heading">');
+		dishName.html(dish.name);
+		divPanel.append(dishName);
+
+		var dishPrice = $('<div class="panel-footer" style="text-align: right">');
+		dishPrice.html(model.getSinglePrice(menu[i]) * model.getNumberOfGuests() + ' SEK');
+		divPanel.append(dishPrice);
+
+		div.append(divPanel);
+		this.divAll.append(div);	
+	}	
+	this.totalPrice = container.find('#totalPrice');
+	this.totalPrice.html(model.getTotalMenuPrice());
+}
