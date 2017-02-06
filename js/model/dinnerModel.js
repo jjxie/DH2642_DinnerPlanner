@@ -10,6 +10,9 @@ var DinnerModel = function() {
 	//Stores the id of each dish in selected menu
 	var selectedMenuById = [2, 3, 100, 201, 202];
 
+	//Stores the current search type
+	var searchType = "main dish";
+
 	//Writes the number of guests
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
@@ -20,11 +23,61 @@ var DinnerModel = function() {
 		return numberOfGuests;
 	}
 
+	//Writes the search type
+	this.setSearchType = function(type) {
+		searchType = type;
+	}
+
+	//Returns the search type
+	this.getSearchType = function() {
+		return searchType;
+	}
+	//Returns the current search type
+
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (type,filter) {
-		return dishes.filter(function(dish) {
+
+	// this.getAllDishes = function (type,filter) {
+	// 	var searchResult = [];
+	// 	if (type == 'all'){
+	// 		searchResult.push(this.getAllDishes('starter', filter));
+	// 		searchResult.push(this.getAllDishes('main dish', filter));
+	// 		searchResult.push(this.getAllDishes('dessert', filter));
+	// 	}
+	// 	else{
+	// 		searchResult = dishes.filter(function(dish) {
+	// 			var found = true;
+	// 			if(filter){
+	// 				found = false;
+	// 				dish.ingredients.forEach(function(ingredient) {
+	// 					if(ingredient.name.indexOf(filter)!=-1) {
+	// 						found = true;
+	// 					}
+	// 				});
+	// 				if(dish.name.indexOf(filter) != -1)
+	// 				{
+	// 					found = true;
+	// 				}
+	// 			}
+	// 			return dish.type == type && found;
+	// 		});	
+	// 	}
+	// 	return searchResult;
+	// }
+
+	this.getAllDishesInId = function(type, filter) {
+		var searchResultsInId = [];	
+		if (type == 'all'){
+			var all = ['starter', 'main dish', 'dessert'];
+			for (key in all){
+				var temp = this.getAllDishesInId(all[key],filter);
+				for (i = 0; i < temp.length; i ++){
+					searchResultsInId.push(temp[i]);
+				}
+			}
+		}
+		var searchResults = dishes.filter(function(dish) {
 			var found = true;
 			if(filter){
 				found = false;
@@ -39,9 +92,13 @@ var DinnerModel = function() {
 				}
 			}
 			return dish.type == type && found;
-		});	
-	}
+		}); 
+		for (key in searchResults){
+			searchResultsInId.push(searchResults[key].id);
+		}
 
+		return searchResultsInId;
+	}
 	//function that returns a dish of specific ID
 	this.getDish = function(id) {
 		for(key in dishes){
