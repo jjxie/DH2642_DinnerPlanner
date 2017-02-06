@@ -76,13 +76,15 @@
 			<!--thumbnail-->
 			<div class="col-md-6 panel-group">	
 				<div class="col-md-6 panel-header">
-					<h4>LASAGNE</h4>
+					<h4 id="dishName">
+						<!-- Where the dish name locates.  -->
+					</h4>
 				</div>
-				<div id="selectedDishDetail" class="col-md-12 panel-body">
-					<img src="images/bakedbrie.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+				<div id="dishImage" class="col-md-12 panel-body">
+					<!-- Where the dish image locates.  -->
 				</div>
-				<div class="col-md-6 panel-body">
-					description sddsdf
+				<div id="dishDescription" class="col-md-6 panel-body">
+					<!-- Where the dish description locates.  -->
 				</div>
 				<div class="col-xs-12 panel-body">
 					<button id="backToMenuButton" type="button" class="btn btn-warning">Back to Select Dish</button>
@@ -92,7 +94,12 @@
 			<!--Ingredient facts-->
 			<div class="col-md-6 panel-group" style="background-color: rgba(252,159,77,0.5);">	
 				<div class="col-md-12 panel-header">
-					<h4>Ingredients for 4 people</h4>
+					<h4>Ingredients for 
+						<span id="guestNumberOutput">
+							<!-- Where the number of guests locates.  -->
+						</span>
+						 people
+					</h4>
 				</div>
 				<div>
 					<table class="table">
@@ -104,19 +111,8 @@
 								<th class="col-md-2"></th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td>2 tbsp</td>
-								<td>olive oil olive oil olive oil</td>
-								<td>SEK</td>
-								<td>0.20</td>
-							</tr>
-							<tr>
-								<td>2 tbsp</td>
-								<td>olive oil</td>
-								<td>SEK</td>
-								<td>0.20</td>
-							</tr>
+						<tbody id="dishIngredients">
+							<!-- Where the dish ingredients locate.  -->
 						</tbody>
 					</table>
 				</div>
@@ -133,7 +129,9 @@
 								<tr>
 									<td><button id="confirmDishButton" type="button" class="btn btn-warning">Confirm Dish</button></td>
 									<td>SEK</td>
-									<td>77.20</td>
+									<td id="dishPrice">
+										<!-- Where the dish price locates.  -->
+									</td>
 								</tr>
 							</tbody>
 						</thead>
@@ -142,9 +140,9 @@
 			</div>
 
 			<!-- preparation -->
-			<div id="dishPreparation" class="col-md-12 panel-body ">
+			<div class="col-md-12 panel-body ">
 				<div class="col-md-12 panel-header"><h4>PREPARATION</h4></div>
-				<div id="dishPreparationDetail"class="panel-body">dsfdsfds</div>
+				<div id="dishPreparation" class="panel-body"></div>
 			</div>
 		</div> 
 	</div>
