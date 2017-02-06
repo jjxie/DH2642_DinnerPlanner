@@ -6,31 +6,32 @@ var MenuThumbnailView = function (container, model) {
   	// and/or ones that responed to interaction)
 
 
-	var divAll = container.find('#menu');
-	var menu = model.getFullMenuInId();  //should be search results
+	this.divAll = container.find('#menu');
+	var menu = model.getAllDishesInId(model.getSearchType());  //should be search results
 	var imgPath = 'images/'
 	for (i = 0; i < menu.length; i++){		
+			var dish = model.getDish(menu[i]);
 			var div = $('<div class="col-md-4 panel-body">');
 			var divPanel = $('<div class="panel">');
 
-			var imgDiv = $('<div class="panel-body">');
+			var divImage = $('<div class="panel-body">');
 			jQuery('<img/>', {
-				src: imgPath.concat(model.getDish(menu[i]).image),
-				alt: model.getDish(menu[i]).name,
+				src: imgPath.concat(dish.image),
+				alt: dish.name,
 				class: "img-responsive",
-				style: "width:100%; height:auto",
-			}).appendTo(imgDiv);
-			divPanel.append(imgDiv);
+				style: "width:100%; height:200px",
+			}).appendTo(divImage);
+			divPanel.append(divImage);
 			
 			var name = $('<div class="panel-heading">');
-			name.html(model.getDish(menu[i]).name);
+			name.html(dish.name);
 			divPanel.append(name);
 			
 			var description = $('<div class="panel-footer">');
-			description.html(model.getDish(menu[i]).description.substring(0,50).concat('...'));
+			description.html(dish.description.substring(0,40).concat('...'));
 			divPanel.append(description);
 
 			div.append(divPanel);
-			divAll.append(div);		
+			this.divAll.append(div);		
 		}	
 	}
