@@ -3,7 +3,7 @@ var DishDetailView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
-  	var dishId = 2;
+  	var dishId = 100;
   	var dish = model.getDish(dishId); //should use the very dish seleceted
 
   	//Where the dish name locates.
@@ -20,7 +20,7 @@ var DishDetailView = function (container, model) {
 
   	//Where the dish description locates.
   	this.dishDescription = container.find('#dishDescription');
-  	this.dishDescription.html(dish.description.substring(0,100).concat('...'))
+  	this.dishDescription.html(dish.description);
   	
   	//Where the number of guests locates.
   	this.numberOfGuestsO = container.find('#guestNumberOutput');
