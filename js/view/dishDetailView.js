@@ -16,7 +16,7 @@ var DishDetailView = function (container, model) {
   	jQuery('<img/>', {
   		src: imgPath.concat(dish.image),
   		alt: dish.name,
-  	}).appendTo(dishImage);
+  	}).appendTo(this.dishImage);
 
   	//Where the dish description locates.
   	this.dishDescription = container.find('#dishDescription');

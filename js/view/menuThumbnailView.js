@@ -18,7 +18,7 @@ var MenuThumbnailView = function (container, model) {
 				src: imgPath.concat(model.getDish(menu[i]).image),
 				alt: model.getDish(menu[i]).name,
 				class: "img-responsive",
-				style: "width:200px; height:200px",
+				style: "width:100%; height:auto",
 			}).appendTo(imgDiv);
 			divPanel.append(imgDiv);
 			
