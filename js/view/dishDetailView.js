@@ -54,16 +54,5 @@ var DishDetailView = function (container, model) {
 	this.dishPreparation = container.find('#dishPreparation');
   	this.dishPreparation.html(dish.description);
 
-	// dynamicly creates rows
-
-	// var tableBody = container.find('#selectedDish tbody');
-	// var tr = $('<tr>');
-	// var tdName = $('<td>');
-	// tdName.html('Something');
-	// var tdPrice = $('<td>');
-	// tdPrice.html(5);
-	// tr.append(tdName);
-	// tr.append(tdPrice);
-	// tableBody.append(tr);
 }
 
