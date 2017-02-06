@@ -1,4 +1,34 @@
-Interaction Programing - Lab assignment - HTML
+DH2642 Interaction Programing and Dynamic Wed - Lab assignments - HTML & Javascript
 =================================================
 
-This project contains the startup code for HTML version of the Interaction Programing course lab assignment. For more details on how to complete the assignment follow the instructions on the [course website](https://www.kth.se/social/course/DH2641).
+[Course website](https://www.kth.se/social/course/DH2641).
+
+[Github repository](https://github.com/chnhaoli/DH2642_DinnerPlanner)
+
+Authors: 
+	Hao LI (hao4@kth.se)
+	Jingjing XIE (jxi@kth.se)
+
+Files:
+	HTML:
+		index
+		selectMenu
+		dishDetail
+		overview
+		preparation
+	Javascript:
+		app
+		dinnerModel
+		views(7):
+			homeView
+			menuListView
+			menuThumbnailView
+			dishDetailView
+			dinnerFactsBannerView
+			menuSummaryView
+			preparationView
+		controllers(0):
+	README.md
+	Images:
+		bg
+		etc.
