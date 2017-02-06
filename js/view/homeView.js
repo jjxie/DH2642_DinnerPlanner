@@ -8,22 +8,5 @@ var HomeView = function (container, model) {
   	
   	this.numberOfGuests.html(model.getNumberOfGuests());
   	
-	// this.numberOfGuests = container.find("#guestNumber");
-	// this.plusButton = container.find("#plusGuest");
-	// this.minusButton = container.find("#minusGuest");
-	
-	// this.numberOfGuests.val(model.getNumberOfGuests());
-
-	// dynamicly creates rows 
-
-	// var tableBody = container.find('#selectedDish tbody');
-	// var tr = $('<tr>');
-	// var tdName = $('<td>');
-	// tdName.html('Something');
-	// var tdPrice = $('<td>');
-	// tdPrice.html(5);
-	// tr.append(tdName);
-	// tr.append(tdPrice);
-	// tableBody.append(tr);
 }
 
