@@ -12,5 +12,7 @@ $(function() {
 	var preparationView = new PreparationView($("#preparationView"), model);
 
 	//Controller creation
+	var menuListController = new MenuListController(menuListView, model);
+	var menuThumbnailController = new MenuThumbnailController(menuThumbnailView, model);
 	
 });

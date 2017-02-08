@@ -11,14 +11,21 @@ var DinnerModel = function() {
 	var selectedMenuById = [2, 3, 100, 201, 202];
 
 	//Stores the current search type
-	var searchType = "main dish";
+	var searchType = "all";
+
+	//Stores the current filter keyword
+	var filterKeyword = '';
+
+	//Stores the id of current concerning dish
+	var currentDish = 1;
 
 	//Writes the number of guests
 	this.setNumberOfGuests = function(num) {
-		numberOfGuests = num;
+		numberOfGuests = num >= 0 ? num : 0;
+		notifyObservers('numberOfGuests');
 	}
 
-	//Returns the number of guests
+	//Returns the current number of guests
 	this.getNumberOfGuests = function() {
 		return numberOfGuests;
 	}
@@ -26,13 +33,35 @@ var DinnerModel = function() {
 	//Writes the search type
 	this.setSearchType = function(type) {
 		searchType = type;
+		notifyObservers('searchType');
 	}
 
-	//Returns the search type
+	//Returns the current search type
 	this.getSearchType = function() {
 		return searchType;
 	}
-	//Returns the current search type
+	
+	//Writes the filter keyword
+	this.setFilterKeyword = function(filter) {
+		filterKeyword = filter;
+		notifyObservers('filterKeyword');
+	}
+
+	//Returns the current filter keyword
+	this.getFilterKeyword = function() {
+		return filterKeyword;
+	}
+
+	//Writes the current dish
+	this.setCurrentDish = function(id) {
+		currentDish = id;
+		// notifyObservers('currentDish'); //No potential implement yet
+	}
+
+	//Returns the current dish
+	this.getCurrentDish = function() {
+		return filterKeyword;
+	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
@@ -175,6 +204,23 @@ var DinnerModel = function() {
 	this.removeDishFromMenu = function(id) {
 		selectedMenuById.splice(selectedMenuById.indexOf(id),1);
 	}
+	
+	//Stores observers;
+	var observerList = [];
+
+	//Adds new observer to the array
+	this.addObserver = function(observer) {
+		observerList.push(observer); 
+	}
+
+	//Calls the update method on each of the observers in the array
+	var notifyObservers = function(obj) {
+		for(i =0; i < observerList.length; i++){
+			observerList[i].update(obj);
+		}
+	}
+
+
 
 
 
