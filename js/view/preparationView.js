@@ -11,7 +11,7 @@ var PreparationView = function (container, model) {
   	var dish = model.getDish(dishId); //should use the very dish seleceted
 
   	//Where the dish name locates.
-  	this.dishName = container.find('#selectedName1');  	
+  	this.dishName = container.find('#selectedName');  	
   	this.dishName.html(dish.name);
 
   	//Where the dish image locates.
