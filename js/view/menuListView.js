@@ -47,11 +47,8 @@ var MenuListView = function (container, model) {
 			that.numberOfGuestsI.val(model.getNumberOfGuests());
 			that.totalMenuPrice.html(model.getTotalMenuPrice());
 		}
-		console.log(obj == 'menuList' || obj == 'numberOfGuests');
 		if(obj == 'menuList' || obj == 'numberOfGuests'){
 			popMenuList(model.getFullMenuInId());
-			console.log("MenuListView updated numberOfGuests");
-			//Bug: here breaks the loop of notifyObservers
 		}
 	}
 }

@@ -27,8 +27,18 @@ Files:
 			dinnerFactsBannerView
 			menuSummaryView
 			preparationView
-		controllers(0):
-	README.md
+		controllers(2):
+			menuListController
+			menuThumbnailController
 	Images:
 		bg
 		etc.
+	README.md(this)
+	
+Questions 9/Feb/2017
+	1, How to adjust the background picture size?
+	2, Why the page loading is such slow?
+	3, How to align the guest number imput group?
+	4, Why imput text for searching is disabled while resized?
+	5, Need we merge the HTML files? If so, how?
+	
