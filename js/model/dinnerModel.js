@@ -5,7 +5,7 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 	
 	//Stores the number of guests
-	var numberOfGuests = 8;
+	var numberOfGuests = 0;
 
 	//Stores the id of each dish in selected menu
 	var selectedMenuById = [2, 3, 100, 201, 202];
@@ -17,12 +17,14 @@ var DinnerModel = function() {
 	var filterKeyword = '';
 
 	//Stores the id of current concerning dish
-	var currentDish = 1;
+	var currentDish = 100;
 
 	//Writes the number of guests
 	this.setNumberOfGuests = function(num) {
-		numberOfGuests = num >= 0 ? num : 0;
-		notifyObservers('numberOfGuests');
+		if(num != numberOfGuests){ 
+			numberOfGuests = num >= 0 ? num : 0;
+			notifyObservers('numberOfGuests');
+		}
 	}
 
 	//Returns the current number of guests
@@ -32,8 +34,10 @@ var DinnerModel = function() {
 
 	//Writes the search type
 	this.setSearchType = function(type) {
-		searchType = type;
-		notifyObservers('searchType');
+		if(type != searchType) {
+			searchType = type;
+			notifyObservers('searchType');
+		}
 	}
 
 	//Returns the current search type
@@ -43,8 +47,10 @@ var DinnerModel = function() {
 	
 	//Writes the filter keyword
 	this.setFilterKeyword = function(filter) {
-		filterKeyword = filter;
-		notifyObservers('filterKeyword');
+		if(filter != filterKeyword) {
+			filterKeyword = filter;
+			notifyObservers('filterKeyword');
+		}
 	}
 
 	//Returns the current filter keyword
@@ -53,14 +59,16 @@ var DinnerModel = function() {
 	}
 
 	//Writes the current dish
-	this.setCurrentDish = function(id) {
-		currentDish = id;
-		// notifyObservers('currentDish'); //No potential implement yet
+	this.setCurrentDishId = function(id) {
+		if(id != currentDish) {
+			currentDish = id;
+			notifyObservers('currentDish');
+		}
 	}
 
 	//Returns the current dish
-	this.getCurrentDish = function() {
-		return filterKeyword;
+	this.getCurrentDishId = function() {
+		return currentDish;
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -211,12 +219,13 @@ var DinnerModel = function() {
 	//Adds new observer to the array
 	this.addObserver = function(observer) {
 		observerList.push(observer); 
+
 	}
 
 	//Calls the update method on each of the observers in the array
 	var notifyObservers = function(obj) {
-		for(i =0; i < observerList.length; i++){
-			observerList[i].update(obj);
+		for(thisObserver = 0; thisObserver < observerList.length; thisObserver++){
+			observerList[thisObserver].update(obj);
 		}
 	}
 

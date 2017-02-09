@@ -3,7 +3,8 @@ var MenuListView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
-  	
+  	var that = this;
+
   	this.numberOfGuestsI = container.find("#guestNumberInput");
   	this.plusButton = container.find("#plusGuest");
   	this.minusButton = container.find("#minusGuest");
@@ -11,8 +12,9 @@ var MenuListView = function (container, model) {
 
 	// create rows for menu list 
 	var tableBody = container.find('#selectedDish tbody');
-	var createMenuList = function(menu){
+	var popMenuList = function(menu){
 		// why using "key" would cause a bug here?
+		tableBody.html('');
 		for (i = 0 ; i < menu.length; i++){
 			var tr = $('<tr>');
 
@@ -20,7 +22,7 @@ var MenuListView = function (container, model) {
 			tdName.html(model.getDish(menu[i])['name']);	
 
 			var tdPrice = $('<td>');
-			tdPrice.html(model.getSinglePrice(menu[i]));
+			tdPrice.html(model.getSinglePrice(menu[i])*model.getNumberOfGuests());
 
 			tr.append(tdName);
 			tr.append(tdPrice);
@@ -30,7 +32,7 @@ var MenuListView = function (container, model) {
 	}
 
 	//Load the menu list first.
-	createMenuList(model.getFullMenuInId());
+	popMenuList(model.getFullMenuInId());
 
 	//Displays the total menu price.
 	this.totalMenuPrice = container.find('#totalMenuPrice');
@@ -42,11 +44,14 @@ var MenuListView = function (container, model) {
 	//Updates this view when being called.
 	this.update = function(obj){
 		if(obj == 'numberOfGuests'){
-			this.numberOfGuestsI.val(model.getNumberOfGuests());
-			this.totalMenuPrice.html(model.getTotalMenuPrice());
+			that.numberOfGuestsI.val(model.getNumberOfGuests());
+			that.totalMenuPrice.html(model.getTotalMenuPrice());
 		}
-		if(obj == 'menuList'){
-			createMenuList(model.getFullMenuInId());
+		console.log(obj == 'menuList' || obj == 'numberOfGuests');
+		if(obj == 'menuList' || obj == 'numberOfGuests'){
+			popMenuList(model.getFullMenuInId());
+			console.log("MenuListView updated numberOfGuests");
+			//Bug: here breaks the loop of notifyObservers
 		}
 	}
 }

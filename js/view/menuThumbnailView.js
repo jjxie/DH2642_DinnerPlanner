@@ -12,7 +12,7 @@ var MenuThumbnailView = function (container, model) {
   	this.divAll = container.find('#menu');
   	var that = this;
   	var imgPath = 'images/'
-  	var createSearchResultList = function(menu) {
+  	var popSearchResultList = function(menu) {
   		that.divAll.html(''); //Initiation.
   		for (i = 0; i < menu.length; i++){		
   			var dish = model.getDish(menu[i]);
@@ -42,16 +42,15 @@ var MenuThumbnailView = function (container, model) {
   	}
 
 	//Loads the view first.
-	createSearchResultList(model.getAllDishesInId(model.getSearchType(), model.getFilterKeyword()));
+	popSearchResultList(model.getAllDishesInId(model.getSearchType(), model.getFilterKeyword()));
 	
 	//Registers observer.
 	model.addObserver(this);
 
 	//Updates this view when being called.
-	this.update = function(obj){
-		if(obj == 'searchType' || 'filterKeyword'){
-			createSearchResultList(model.getAllDishesInId(model.getSearchType(), model.getFilterKeyword()));
-			console.log(model.getAllDishesInId(model.getSearchType(), model.getFilterKeyword()));
+	this.update = function(obj) {
+		if(obj == 'searchType' || obj == 'filterKeyword'){
+			popSearchResultList(model.getAllDishesInId(model.getSearchType(), model.getFilterKeyword()));
 		}
 	}	
 }
