@@ -5,34 +5,71 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 	
 	//Stores the number of guests
-	var numberOfGuests = 8;
+	var numberOfGuests = 0;
 
 	//Stores the id of each dish in selected menu
 	var selectedMenuById = [2, 3, 100, 201, 202];
 
 	//Stores the current search type
-	var searchType = "main dish";
+	var searchType = "all";
+
+	//Stores the current filter keyword
+	var filterKeyword = '';
+
+	//Stores the id of current concerning dish
+	var currentDish = 100;
 
 	//Writes the number of guests
 	this.setNumberOfGuests = function(num) {
-		numberOfGuests = num;
+		if(num != numberOfGuests){ 
+			numberOfGuests = num >= 0 ? num : 0;
+			notifyObservers('numberOfGuests');
+		}
 	}
 
-	//Returns the number of guests
+	//Returns the current number of guests
 	this.getNumberOfGuests = function() {
 		return numberOfGuests;
 	}
 
 	//Writes the search type
 	this.setSearchType = function(type) {
-		searchType = type;
+		if(type != searchType) {
+			searchType = type;
+			notifyObservers('searchType');
+		}
 	}
 
-	//Returns the search type
+	//Returns the current search type
 	this.getSearchType = function() {
 		return searchType;
 	}
-	//Returns the current search type
+	
+	//Writes the filter keyword
+	this.setFilterKeyword = function(filter) {
+		if(filter != filterKeyword) {
+			filterKeyword = filter;
+			notifyObservers('filterKeyword');
+		}
+	}
+
+	//Returns the current filter keyword
+	this.getFilterKeyword = function() {
+		return filterKeyword;
+	}
+
+	//Writes the current dish
+	this.setCurrentDishId = function(id) {
+		if(id != currentDish) {
+			currentDish = id;
+			notifyObservers('currentDish');
+		}
+	}
+
+	//Returns the current dish
+	this.getCurrentDishId = function() {
+		return currentDish;
+	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
@@ -175,6 +212,24 @@ var DinnerModel = function() {
 	this.removeDishFromMenu = function(id) {
 		selectedMenuById.splice(selectedMenuById.indexOf(id),1);
 	}
+	
+	//Stores observers;
+	var observerList = [];
+
+	//Adds new observer to the array
+	this.addObserver = function(observer) {
+		observerList.push(observer); 
+
+	}
+
+	//Calls the update method on each of the observers in the array
+	var notifyObservers = function(obj) {
+		for(thisObserver = 0; thisObserver < observerList.length; thisObserver++){
+			observerList[thisObserver].update(obj);
+		}
+	}
+
+
 
 
 

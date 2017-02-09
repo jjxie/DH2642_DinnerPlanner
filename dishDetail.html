@@ -28,16 +28,31 @@
 		<div id="menuListView" class="col-md-3 panel-body" style="background-color: rgba(247,232,218,0.7);">
 			
 			<h4>My Dinner</h4>
-			
+
 			<div class="panel-body">
-				<span>Number of Guest(s): </span><span><input id="guestNumberInput" type="number" name="quantity" min="0" max="500"></span>
+				<span style="font-weight: bold;">Number of Guest(s): </span>
+
+				<span class="input-group" style="width: 160px;">
+					<span class="input-group-btn">
+						<button id="minusGuest" type="button" class="btn btn-warning btn-number"  data-type="minus" data-field="quant[1]">
+							<span class="glyphicon glyphicon-minus"></span>
+						</button>
+					</span>
+					<input id="guestNumberInput" type="text" class="form-control input-number" min="0" max="100">
+					<span class="input-group-btn">
+						<button id="plusGuest" type="button" class="btn btn-warning btn-number">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</span>
+				</span>
+
 			</div>
 			
 			<div id="selectedDish" class="panel-header">
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th class="col-md-5">Dishe Name</th>
+							<th class="col-md-5">Dishes Name</th>
 							<th class="col-md-2">Cost</th>
 						</tr>
 					</thead>
@@ -98,7 +113,7 @@
 						<span id="guestNumberOutput">
 							<!-- Where the number of guests locates.  -->
 						</span>
-						 people
+						people
 					</h4>
 				</div>
 				<div>
@@ -166,8 +181,8 @@
 	<script src="js/view/menuSummaryView.js"></script>
 	<script src="js/view/preparationView.js"></script>
 	<!-- Controllers -->
-	<script src="js/view/exampleViewController.js"></script>
-
+	<script src="js/view/menuListController.js"></script>
+	<script src="js/view/menuThumbnailController.js"></script>
 	<!-- Browser-sync scripts -->
   	<script id="__bs_script__">//<![CDATA[
   		document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.17.0'><\/script>".replace("HOST", location.hostname));
