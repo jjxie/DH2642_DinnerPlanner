@@ -14,5 +14,5 @@ $(function() {
 	//Controller creation
 	var menuListController = new MenuListController(menuListView, model);
 	var menuThumbnailController = new MenuThumbnailController(menuThumbnailView, model);
-	
+	var homeController = new HomeController(homeView, model);
 });
