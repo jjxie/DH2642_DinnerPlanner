@@ -29,11 +29,11 @@
 			<h4>My Dinner</h4>
 
 			<div class="panel-body">
-				<span style="font-weight: bold;">Number of Guest(s): </span>
+				<div style="font-weight: bold; text-align: center;">Number of Guest(s): </div>
 
-				<span class="input-group" style="width: 160px;">
+				<div class="input-group" style="width: 160px; text-align:  center;">
 					<span class="input-group-btn">
-						<button id="minusGuest" type="button" class="btn btn-warning btn-number"  data-type="minus" data-field="quant[1]">
+						<button id="minusGuest" type="button" class="btn btn-warning btn-number" >
 							<span class="glyphicon glyphicon-minus"></span>
 						</button>
 					</span>
@@ -43,12 +43,12 @@
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>
 					</span>
-				</span>
+				</div>
 
 			</div>
 			
 			<div id="selectedDish" class="panel-header">
-				<table class="table table-striped">
+				<table class="table">
 					<thead>
 						<tr>
 							<th class="col-md-5">Dishes Name</th>
@@ -80,7 +80,8 @@
 				</table>
 			</div>
 			<div class="container-fluid">
-				<button id="confirmButton" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</button>
+				<!-- Button here to add the dish into the menu. -->
+				<button id="confirmDinner" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</button>
 			</div>
 		</div> 
 

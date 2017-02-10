@@ -7,9 +7,9 @@ var DishDetailView = function (container, model) {
   	
   	//Where the dish name locates.
   	this.dishName = container.find('#dishName');  	
-	var popName = function(dish){
-	  	that.dishName.html(dish.name);
-	}
+  	var popName = function(dish){
+  		that.dishName.html(dish.name);
+  	}
 
   	//Where the dish image locates.
   	var imgPath = 'images/'
@@ -42,7 +42,7 @@ var DishDetailView = function (container, model) {
 			var ingredient = dish.ingredients[i];
 			var tr = $('<tr>');
 			var tdQuantity = $('<td>');
-			tdQuantity.html([ingredient.quantity * model.getNumberOfGuests(), ingredient.unit].join(' '));
+			tdQuantity.html([(ingredient.quantity * model.getNumberOfGuests()).toFixed(2), ingredient.unit].join(' '));
 			tr.append(tdQuantity); 
 			var tdName = $('<td>'); 
 			tdName.html(ingredient.name);
@@ -51,7 +51,7 @@ var DishDetailView = function (container, model) {
 			tdCurrency.html("SEK");
 			tr.append(tdCurrency);
 			var tdPrice = $('<td>');
-			tdPrice.html((ingredient.price * model.getNumberOfGuests()).toFixed(2));
+			tdPrice.html(ingredient.price * model.getNumberOfGuests());
 			tr.append(tdPrice);
 			that.dishIngredients.append(tr);
 		}
@@ -81,14 +81,13 @@ var DishDetailView = function (container, model) {
 
 	//Updates this view when being called.
 	this.update = function(obj){
-		console.log('dishDetailView numberOfGuests = ' + (obj == 'numberOfGuests'));
 		if(obj == 'numberOfGuests'){
 			popIngredientsList(model.getDish(model.getCurrentDishId()));
+			that.numberOfGuestsO.html(model.getNumberOfGuests());
 		}
 		if(obj == 'currentDish'){
 			popDish(model.getDish(model.getCurrentDishId()));
 		}
-
 	}
 }
 

@@ -5,7 +5,7 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 	
 	//Stores the number of guests
-	var numberOfGuests = 0;
+	var numberOfGuests = 1;
 
 	//Stores the id of each dish in selected menu
 	var selectedMenuById = [2, 3, 100, 201, 202];
@@ -22,7 +22,7 @@ var DinnerModel = function() {
 	//Writes the number of guests
 	this.setNumberOfGuests = function(num) {
 		if(num != numberOfGuests){ 
-			numberOfGuests = num >= 0 ? num : 0;
+			numberOfGuests = num >= 1 ? num : 1;
 			notifyObservers('numberOfGuests');
 		}
 	}

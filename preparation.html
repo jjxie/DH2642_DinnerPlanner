@@ -32,7 +32,7 @@
 					<span> people</span>
 				</div>
 				<div class="col-md-3 panel-body" style="text-align: right;">
-					<a href="selectMenu.html" class="btn btn-warning" role="button">Create new dinner</a>
+					<a id="goBack" href="selectMenu.html" class="btn btn-warning" role="button">Go back and edit dinner</a>
 				</div>
 				<div class="col-md-12">
 					<hr style="border: 1px solid #aaa;">
@@ -41,22 +41,25 @@
 
 			<!-- the preparations on the bottom -->
 			<div id="preparationView" class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8);">
-				<div id="img" class="col-md-2 panel-body">
-					<!-- <img src="images/toast.jpg" class="panel-body"> -->
+				<div id="preparation">
+					
 				</div>
-				<div class="col-md-4 panel-body">
+				<!-- <div id="img" class="col-md-2 panel-body">
+					<img src="images/toast.jpg" class="panel-body">
+				</div> -->
+				<!-- <div class="col-md-4 panel-body">
 					<div id="selectedName" style="font-size: x-large;"></div>
 					<div id="selectedIntro1">
 					</div>
 
-				</div>
-				<div class="col-md-1 panel-body">
+				</div> -->
+				<!-- <div class="col-md-1 panel-body">
 				</div> 
 				<div class="col-md-4 panel-body">
 					<div style="font-size: x-large;">Preparation</div>
 					<div id="selectedPrep1" style="font-size: small;">
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -81,8 +84,8 @@
 	<script src="js/view/menuSummaryView.js"></script>
 	<script src="js/view/preparationView.js"></script>
 	<!-- Controllers -->
-	<script src="js/view/exampleViewController.js"></script>
-	
+	<script src="js/view/menuListController.js"></script>
+	<script src="js/view/menuThumbnailController.js"></script>	
 	<!-- Browser-sync scripts -->
   	<script id="__bs_script__">//<![CDATA[
   		document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.17.0'><\/script>".replace("HOST", location.hostname));
