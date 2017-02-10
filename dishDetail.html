@@ -30,26 +30,26 @@
 			<h4>My Dinner</h4>
 
 			<div class="panel-body">
-				<span style="font-weight: bold;">Number of Guest(s): </span>
+				<div style="font-weight: bold; text-align: center;">Number of Guest(s): </div>
 
-				<span class="input-group" style="width: 160px;">
+				<div class="input-group" style="width: 160px; margin: auto;">
 					<span class="input-group-btn">
-						<button id="minusGuest" type="button" class="btn btn-warning btn-number"  data-type="minus" data-field="quant[1]">
+						<button id="minusGuest" type="button" class="btn btn-warning btn-number" >
 							<span class="glyphicon glyphicon-minus"></span>
 						</button>
 					</span>
-					<input id="guestNumberInput" type="text" class="form-control input-number" min="0" max="100">
+					<input id="guestNumberInput" type="text" class="form-control input-number" min="0" max="100" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 					<span class="input-group-btn">
 						<button id="plusGuest" type="button" class="btn btn-warning btn-number">
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>
 					</span>
-				</span>
+				</div>
 
 			</div>
 			
 			<div id="selectedDish" class="panel-header">
-				<table class="table table-striped">
+				<table class="table">
 					<thead>
 						<tr>
 							<th class="col-md-5">Dishes Name</th>
@@ -84,9 +84,7 @@
 				<!-- Button here to confirm the dinner menu. -->
 				<button id="confirmDinner" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</button>
 			</div>
-		</div> 
-
-		<!--detailed info of a dish on the right-->
+		</div>		<!--detailed info of a dish on the right-->
 		<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8);">
 
 			<!--thumbnail-->
