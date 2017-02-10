@@ -41,4 +41,4 @@ Questions 9/Feb/2017
 	3, How to align the guest number imput group?
 	4, Why imput text for searching is disabled while resized?
 	5, Need we merge the HTML files? If so, how?
-	
+	overflow auto none

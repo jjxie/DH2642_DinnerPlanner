@@ -11,16 +11,17 @@
 
 </head>
 
-<body style="background-image: url('bg.jpg'); background-size: cover;">
+<body style="background-image: url('bg.jpg'); background-size: cover; overflow: hidden;">
 
-	<!-- heading panel -->
+	<!-- Heading panel {All pages} -->
 	<div class="container-fluid " >
 		<div id="headingPanel"  class="col-md-12" style="background-color: rgba(48,48,48,0.9);">
 			<div class="col-md-3 panel-body text-center" ><h1 style="color: white;">HOMELETTE</h1></div>
 			<div class="col-md-9 panel-body"><br></br><p><em style="color: white;">From the best chefs in the world directly into your kitchen</em></p></div>
 		</div>
 	</div>
-
+	
+	<!-- * * * * * * Home view {Homepage} * * * * * *  -->
 	<div id="homeView" class="container-fluid" >
 		<!-- intro panel -->
 		<div id="introPanel" class=" col-md-5" style="background-color:rgba(255,255,255,0.8); top:100px; left:50px;">
@@ -32,11 +33,234 @@
 				<div id="quickStart">
 					<br></br>
 					<div>Start quickly<p></p></div>
-					<a href="selectMenu.html" class="btn btn-warning" role="button">Create new dinner</a>
+					<!-- Button here to go to a new dinner -->
+					<button id="newDinner" class="btn btn-warning">Create new dinner</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<!-- * * * * * * Menu list view {Select menu page; dish detail page} * * * * * * -->
+	<!-- list of selected menu on the left -->
+	<div id="menuListView" class="col-md-3 panel-body" style="background-color: rgba(247,232,218,0.7); display: none;">
+
+		<h4>My Dinner</h4>
+
+		<div class="panel-body">
+			<div style="font-weight: bold; text-align: center;">Number of Guest(s): </div>
+
+			<div class="input-group" style="width: 160px; margin: auto;">
+				<span class="input-group-btn">
+					<button id="minusGuest" type="button" class="btn btn-warning btn-number" >
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+				</span>
+				<input id="guestNumberInput" type="text" class="form-control input-number" min="0" max="100" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+				<span class="input-group-btn">
+					<button id="plusGuest" type="button" class="btn btn-warning btn-number">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</span>
+			</div>
+
+		</div>
+
+		<div id="selectedDish" class="panel-header">
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="col-md-5">Dishes Name</th>
+						<th class="col-md-2">Cost</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Where the menu list locates. -->
+				</tbody>
+			</table>
+		</div>
+
+		<div id="totalCost" class="panel-header">
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="col-md-8"></th>
+						<th class="col-md-4"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="text-align: right;">SEK</td>
+						<td id="totalMenuPrice"> 
+							<!-- Where the total price locates. -->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="container-fluid">
+			<!-- Button here to confirm the dinner menu. -->
+			<button id="confirmDinner" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</button>
+		</div>
+	</div> 
+
+	<!-- * * * * * * Menu thumbnail view {Select menu page} * * * * * * -->
+	<!--Thumbnails of dishes on the right-->
+	<div id="menuThumbnailView" class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.8); display: none;">
+		<div class="col-md-12 panel-header">
+			<h4>Select Dishes</h4>
+		</div>
+		<div id="search">
+			<div class="col-md-4 panel-body">
+				<input id="filterKeyword" class="form-control" type="text" placeholder="Enter key words to search">
+			</div>
+			<div class="col-md-4 panel-body"><button id="searchButton" type="button" class="btn btn-default">Search</button>
+			</div>
+		</div>
+		<div class="col-md-4 panel-body">
+			<select id="searchType" class="form-control">
+				<option value="all">All Dishes</option>
+				<option value="main dish">Main</option>
+				<option value="starter">Starter</option>
+				<option value="dessert">Dessert</option>
+			</select>
+		</div>
+		<div id="menu" class="row" style="overflow: auto; height: 65vh; width: 100%; ">
+			<!-- Where the search results locates. -->
+		</div>
+	</div>
+
+	<!-- * * * * * * Dish detail view {Dish detail page} * * * * * * -->
+	<!--detailed info of a dish on the right-->
+	<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8); display: none;">
+
+		<!--thumbnail-->
+		<div class="col-md-6 panel-group">	
+			<div class="col-md-6 panel-header">
+				<h4 id="dishName">
+					<!-- Where the dish name locates.  -->
+				</h4>
+			</div>
+			<div id="dishImage" class="col-md-12 panel-body">
+				<!-- Where the dish image locates.  -->
+			</div>
+			<div id="dishDescription" class="col-md-12 panel-body">
+				<!-- Where the dish description locates.  -->
+			</div>
+			<div class="col-xs-12 panel-body">
+				<!-- Button here to go back to dish searching page. -->
+				<button id="backToMenu" type="button" class="btn btn-warning">Back to Select Dish</button>
+			</div>
+		</div>
+
+		<!--Ingredient facts-->
+		<div class="col-md-6 panel-group" style="background-color: rgba(252,159,77,0.5);">	
+			<div class="col-md-12 panel-header">
+				<h4>Ingredients for 
+					<span id="guestNumberOutput">
+						<!-- Where the number of guests locates.  -->
+					</span>
+					people
+				</h4>
+			</div>
+			<div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="col-md-2"></th>
+							<th class="col-md-6"></th>
+							<th class="col-md-2"></th>
+							<th class="col-md-2"></th>
+						</tr>
+					</thead>
+					<tbody id="dishIngredients">
+						<!-- Where the dish ingredients locate.  -->
+					</tbody>
+				</table>
+			</div>
+
+			<div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="col-md-8"></th>
+							<th class="col-md-2"></th>
+							<th class="col-md-2"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<!-- Button here to add the dish into the menu. -->
+								<button id="addDish" type="button" class="btn btn-warning">Add dish</button>
+							</td>
+							<td>SEK</td>
+							<td id="dishPrice">
+								<!-- Where the dish price locates.  -->
+							</td>
+						</tr>
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+
+		<!-- Preparation -->
+		<div class="col-md-12 panel-body ">
+			<div class="col-md-12 panel-header"><h4>PREPARATION</h4></div>
+			<div id="dishPreparation" class="panel-body"></div>
+		</div>
+	</div> 
+
+	<!-- * * * * * * Dinner facts banner view {Overview page; Preparation page} * * * * * * -->
+	<!-- banner of dinner facts and new dinner portal on the top -->
+	<div id="dinnerFactsBannerView" class="panel-body" style="background-color:rgba(255,255,255,0.8); display: none;">
+		<div class="col-md-9 panel-body" style="font-size: xx-large;">
+			<span>My Dinner: </span>
+			<span id = "guestNumberOutput"></span>
+			<span> people</span>
+		</div>
+		<div class="col-md-3 panel-body" style="text-align: right;">
+			<a id="goBack" href="selectMenu.html" class="btn btn-warning" role="button">Go back and edit dinner</a>
+		</div>
+		<div class="col-md-12">
+			<hr style="border: 1px solid #aaa;">
+		</div>
+	</div>
+
+	<!-- * * * * * * Menu summary view {Overview page} * * * * * * -->
+	<!-- the summary of dinner menu on the bottom -->
+	<div id="menuSummaryView" class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8); display: none;">
+
+		<!-- Menu summary -->
+		<div id="menuSummary" class="col-md-12 panel-body">
+			<!-- Where the menu summary locates. -->
+		</div>
+		<!-- Total price -->
+		<div class="col-md-12 panel-body">
+			<div style="font-size: x-large; text-align: center;">
+				<span>Total: </span>
+				<span id="totalPrice">
+					<!-- Where the total price locates. -->
+				</span>
+				<span> SEK</span>
+			</div>
+		</div>
+
+		<div class="col-md-12 panel-body" style="text-align: center;">
+			<hr style="border: 1px solid #aaa;">
+			<!-- Button here to view the full preparation receipe. -->
+			<a href="selectMenu.html" class="btn btn-warning" role="button" >Print Full Recipe</a>
+		</div>
+	</div>
+
+	<!-- * * * * * * Preparation view {Preparation page} * * * * * * -->
+	<!-- the preparations on the bottom -->
+	<div id="preparationView" class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8); display: none;">
+		<div id="preparation">
+			<!-- Where the preparation panel locates. -->
+		</div>
+	</div>
+
 
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery.js"></script>
@@ -56,8 +280,9 @@
 	<script src="js/view/menuSummaryView.js"></script>
 	<script src="js/view/preparationView.js"></script>
 	<!-- Controllers -->
-	<script src="js/view/exampleViewController.js"></script>
-
+	<script src="js/view/homeController.js"></script>
+	<script src="js/view/menuListController.js"></script>
+	<script src="js/view/menuThumbnailController.js"></script>
 	<!-- Browser-sync scripts -->
   	<script id="__bs_script__">//<![CDATA[
   		document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.17.0'><\/script>".replace("HOST", location.hostname));
