@@ -31,13 +31,13 @@
 			<div class="panel-body">
 				<div style="font-weight: bold; text-align: center;">Number of Guest(s): </div>
 
-				<div class="input-group" style="width: 160px; text-align:  center;">
+				<div class="input-group" style="width: 160px; margin: auto;">
 					<span class="input-group-btn">
 						<button id="minusGuest" type="button" class="btn btn-warning btn-number" >
 							<span class="glyphicon glyphicon-minus"></span>
 						</button>
 					</span>
-					<input id="guestNumberInput" type="text" class="form-control input-number" min="0" max="100">
+					<input id="guestNumberInput" type="text" class="form-control input-number" min="0" max="100" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 					<span class="input-group-btn">
 						<button id="plusGuest" type="button" class="btn btn-warning btn-number">
 							<span class="glyphicon glyphicon-plus"></span>
@@ -80,7 +80,7 @@
 				</table>
 			</div>
 			<div class="container-fluid">
-				<!-- Button here to add the dish into the menu. -->
+				<!-- Button here to confirm the dinner menu. -->
 				<button id="confirmDinner" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</button>
 			</div>
 		</div> 
@@ -91,13 +91,13 @@
 				<h4>Select Dishes</h4>
 			</div>
 			<div id="search">
-				<div class="col-xs-4 panel-body">
+				<div class="col-md-4 panel-body">
 					<input id="filterKeyword" class="form-control" type="text" placeholder="Enter key words to search">
 				</div>
-				<div class="col-xs-4 panel-body"><button id="searchButton" type="button" class="btn btn-default">Search</button>
+				<div class="col-md-4 panel-body"><button id="searchButton" type="button" class="btn btn-default">Search</button>
 				</div>
 			</div>
-			<div class="col-xs-4 panel-body">
+			<div class="col-md-4 panel-body">
 				<select id="searchType" class="form-control">
 					<option value="all">All Dishes</option>
 					<option value="main dish">Main</option>
