@@ -3,12 +3,17 @@ var MenuListView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
+
+  	//container.hide();
+
   	var that = this;
 
   	this.numberOfGuestsI = container.find("#guestNumberInput");
-  	this.plusButton = container.find("#plusGuest");
-  	this.minusButton = container.find("#minusGuest");
   	this.numberOfGuestsI.val(model.getNumberOfGuests());
+
+  	this.plusGuestButton = container.find("#plusGuestButton");
+  	this.minusGuestButton = container.find("#minusGuestButton");
+  	this.confirmDinnerButton = container.find('#confirmDinnerButton');
 
 	// create rows for menu list 
 	var tableBody = container.find('#selectedDish tbody');

@@ -8,7 +8,7 @@ var DinnerModel = function() {
 	var numberOfGuests = 1;
 
 	//Stores the id of each dish in selected menu
-	var selectedMenuById = [2, 3, 100, 201, 202];
+	var selectedMenuById = [2, 3, 101, 201, 202];
 
 	//Stores the current search type
 	var searchType = "all";
@@ -206,13 +206,26 @@ var DinnerModel = function() {
 	this.addDishToMenu = function(id) {
 		selectedMenuById.push(id);
 		selectedMenuById.sort();
+		notifyObservers('menuList');
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		selectedMenuById.splice(selectedMenuById.indexOf(id),1);
+		notifyObservers('menuList');
 	}
 	
+	//Returns if the current dish is on the menu.
+	this.isOnMenu = function() {
+		var yes = false;
+		for(j = 0; j < selectedMenuById.length; j++) {
+			if(currentDish == selectedMenuById[j]) {
+				yes = true;
+				break;
+			}
+		}
+		return yes;
+	}
 	//Stores observers;
 	var observerList = [];
 

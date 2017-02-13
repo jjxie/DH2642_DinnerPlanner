@@ -14,7 +14,7 @@
 <body style="background-image: url('bg.jpg'); background-size: cover; overflow: hidden;">
 
 	<!-- Heading panel {All pages} -->
-	<div class="container-fluid " >
+	<div >
 		<div id="headingPanel"  class="col-md-12" style="background-color: rgba(48,48,48,0.9);">
 			<div class="col-md-3 panel-body text-center" ><h1 style="color: white;">HOMELETTE</h1></div>
 			<div class="col-md-9 panel-body"><br></br><p><em style="color: white;">From the best chefs in the world directly into your kitchen</em></p></div>
@@ -34,7 +34,7 @@
 					<br></br>
 					<div>Start quickly<p></p></div>
 					<!-- Button here to go to a new dinner -->
-					<button id="newDinner" class="btn btn-warning">Create new dinner</button>
+					<button id="newDinnerButton" class="btn btn-warning">Create new dinner</button>
 				</div>
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 
 	<!-- * * * * * * Menu list view {Select menu page; dish detail page} * * * * * * -->
 	<!-- list of selected menu on the left -->
-	<div id="menuListView" class="col-md-3 panel-body" style="background-color: rgba(247,232,218,0.7); display: none;">
+	<div id="menuListView" class="col-md-3 panel-body" style="background-color: rgba(247,232,218,0.7);">
 
 		<h4>My Dinner</h4>
 
@@ -51,18 +51,17 @@
 
 			<div class="input-group" style="width: 160px; margin: auto;">
 				<span class="input-group-btn">
-					<button id="minusGuest" type="button" class="btn btn-warning btn-number" >
+					<button id="minusGuestButton" type="button" class="btn btn-warning btn-number" >
 						<span class="glyphicon glyphicon-minus"></span>
 					</button>
 				</span>
 				<input id="guestNumberInput" type="text" class="form-control input-number" min="0" max="100" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 				<span class="input-group-btn">
-					<button id="plusGuest" type="button" class="btn btn-warning btn-number">
+					<button id="plusGuestButton" type="button" class="btn btn-warning btn-number">
 						<span class="glyphicon glyphicon-plus"></span>
 					</button>
 				</span>
 			</div>
-
 		</div>
 
 		<div id="selectedDish" class="panel-header">
@@ -99,17 +98,17 @@
 		</div>
 		<div class="container-fluid">
 			<!-- Button here to confirm the dinner menu. -->
-			<button id="confirmDinner" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</button>
+			<button id="confirmDinnerButton" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</button>
 		</div>
 	</div> 
 
 	<!-- * * * * * * Menu thumbnail view {Select menu page} * * * * * * -->
 	<!--Thumbnails of dishes on the right-->
-	<div id="menuThumbnailView" class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.8); display: none;">
+	<div id="menuThumbnailView" class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.8);">
 		<div class="col-md-12 panel-header">
 			<h4>Select Dishes</h4>
 		</div>
-		<div id="search">
+		<div id="searchPanel">
 			<div class="col-md-4 panel-body">
 				<input id="filterKeyword" class="form-control" type="text" placeholder="Enter key words to search">
 			</div>
@@ -131,7 +130,7 @@
 
 	<!-- * * * * * * Dish detail view {Dish detail page} * * * * * * -->
 	<!--detailed info of a dish on the right-->
-	<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8); display: none;">
+	<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8);">
 
 		<!--thumbnail-->
 		<div class="col-md-6 panel-group">	
@@ -148,7 +147,7 @@
 			</div>
 			<div class="col-xs-12 panel-body">
 				<!-- Button here to go back to dish searching page. -->
-				<button id="backToMenu" type="button" class="btn btn-warning">Back to Select Dish</button>
+				<button id="goBackButton" type="button" class="btn btn-warning">Back to Select Dish</button>
 			</div>
 		</div>
 
@@ -191,7 +190,7 @@
 						<tr>
 							<td>
 								<!-- Button here to add the dish into the menu. -->
-								<button id="addDish" type="button" class="btn btn-warning">Add dish</button>
+								<button id="setDishButton" type="button" class="btn btn-warning"></button>
 							</td>
 							<td>SEK</td>
 							<td id="dishPrice">
@@ -212,15 +211,15 @@
 	</div> 
 
 	<!-- * * * * * * Dinner facts banner view {Overview page; Preparation page} * * * * * * -->
-	<!-- banner of dinner facts and new dinner portal on the top -->
-	<div id="dinnerFactsBannerView" class="panel-body" style="background-color:rgba(255,255,255,0.8); display: none;">
+	<!-- banner of dinner facts and go back portal on the top -->
+	<div id="dinnerFactsBannerView" class="panel-body" style="background-color:rgba(255,255,255,0.8);">
 		<div class="col-md-9 panel-body" style="font-size: xx-large;">
 			<span>My Dinner: </span>
 			<span id = "guestNumberOutput"></span>
 			<span> people</span>
 		</div>
 		<div class="col-md-3 panel-body" style="text-align: right;">
-			<a id="goBack" href="selectMenu.html" class="btn btn-warning" role="button">Go back and edit dinner</a>
+			<button id="editDinnerButton" class="btn btn-warning">Go back and edit dinner</button>
 		</div>
 		<div class="col-md-12">
 			<hr style="border: 1px solid #aaa;">
@@ -229,7 +228,7 @@
 
 	<!-- * * * * * * Menu summary view {Overview page} * * * * * * -->
 	<!-- the summary of dinner menu on the bottom -->
-	<div id="menuSummaryView" class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8); display: none;">
+	<div id="menuSummaryView" class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8); overflow: auto; height: 75vh;">
 
 		<!-- Menu summary -->
 		<div id="menuSummary" class="col-md-12 panel-body">
@@ -249,13 +248,13 @@
 		<div class="col-md-12 panel-body" style="text-align: center;">
 			<hr style="border: 1px solid #aaa;">
 			<!-- Button here to view the full preparation receipe. -->
-			<a href="selectMenu.html" class="btn btn-warning" role="button" >Print Full Recipe</a>
+			<button id="fullRecipeButton" class="btn btn-warning" role="button" >Print Full Recipe</button>
 		</div>
 	</div>
 
 	<!-- * * * * * * Preparation view {Preparation page} * * * * * * -->
 	<!-- the preparations on the bottom -->
-	<div id="preparationView" class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8); display: none;">
+	<div id="preparationView" class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8); overflow: auto; height: 75vh;">
 		<div id="preparation">
 			<!-- Where the preparation panel locates. -->
 		</div>
@@ -283,6 +282,10 @@
 	<script src="js/view/homeController.js"></script>
 	<script src="js/view/menuListController.js"></script>
 	<script src="js/view/menuThumbnailController.js"></script>
+	<script src="js/view/dishDetailController.js"></script>
+	<script src="js/view/dinnerFactsBannerController.js"></script>
+	<script src="js/view/menuSummaryController.js"></script>
+	<script src="js/view/preparationController.js"></script>
 	<!-- Browser-sync scripts -->
   	<script id="__bs_script__">//<![CDATA[
   		document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.17.0'><\/script>".replace("HOST", location.hostname));

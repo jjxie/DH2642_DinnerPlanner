@@ -3,7 +3,13 @@ var DishDetailView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
+  	// container.hide();
+  	
   	var that = this;
+
+  	var imgPath = 'images/'
+  	
+  	this.goBackButton = container.find('#goBackButton');
   	
   	//Where the dish name locates.
   	this.dishName = container.find('#dishName');  	
@@ -12,7 +18,6 @@ var DishDetailView = function (container, model) {
   	}
 
   	//Where the dish image locates.
-  	var imgPath = 'images/'
   	this.dishImage = container.find('#dishImage');
   	var popImage = function(dish) {
   		that.dishImage.html('');
@@ -56,7 +61,18 @@ var DishDetailView = function (container, model) {
 			that.dishIngredients.append(tr);
 		}
 		that.dishPrice.html(model.getSinglePrice(dish.id) * model.getNumberOfGuests());
+	}
 
+	//The button to add/delete the dish to/from the menu.
+	this.setDishButton = container.find('#setDishButton');
+	
+	var popSetDishButton = function() {
+		if(model.isOnMenu()) {
+			that.setDishButton.html('Remove this dish');
+		}
+		else {
+			that.setDishButton.html('Add this dish');
+		}
 	}
 
 
@@ -67,14 +83,16 @@ var DishDetailView = function (container, model) {
 		that.dishPreparation.html(dish.description);
 	}
 
-	var popDish = function(dish){
+	var popDish = function(dish) {
 		popName(dish);
 		popImage(dish);
 		popIngredientsList(dish);
 		popDescription(dish);
 		popPreparation(dish);
 	}
+
 	popDish(model.getDish(model.getCurrentDishId()));
+	popSetDishButton();
 	
 	//Registers observer.
 	model.addObserver(this);
@@ -87,6 +105,10 @@ var DishDetailView = function (container, model) {
 		}
 		if(obj == 'currentDish'){
 			popDish(model.getDish(model.getCurrentDishId()));
+			popSetDishButton();
+		}
+		if(obj == 'menuList'){
+			popSetDishButton();
 		}
 	}
 }

@@ -12,7 +12,11 @@ $(function() {
 	var preparationView = new PreparationView($("#preparationView"), model);
 
 	//Controller creation
+	var homeController = new HomeController(homeView, model);
 	var menuListController = new MenuListController(menuListView, model);
 	var menuThumbnailController = new MenuThumbnailController(menuThumbnailView, model);
-	var homeController = new HomeController(homeView, model);
+	var dishDetailController = new DishDetailController(dishDetailView, model);
+	var dinnerFactsBannerController = new DinnerFactsBannerController(dinnerFactsBannerView, model);
+	var menuSummaryController = new MenuSummaryController(menuSummaryView, model);
+	var preparationController = new PreparationController(preparationView, model);
 });

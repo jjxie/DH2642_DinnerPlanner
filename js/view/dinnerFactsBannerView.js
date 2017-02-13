@@ -3,10 +3,15 @@ var DinnerFactsBannerView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
+  	container.hide();
+
   	var that = this;
+  	
   	this.numberOfGuestsO = container.find('#guestNumberOutput');
   	this.numberOfGuestsO.html(model.getNumberOfGuests());
 
+  	this.editDinnerButton = container.find('#editDinnerButton');
+  	
 	//Registers observer.
 	model.addObserver(this);
 
