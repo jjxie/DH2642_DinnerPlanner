@@ -8,7 +8,7 @@ var DinnerModel = function() {
 	var numberOfGuests = 1;
 
 	//Stores the id of each dish in selected menu
-	var selectedMenuById = [2, 3, 101, 201, 202];
+	var selectedMenuById = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 
 	//Stores the current search type
 	var searchType = "all";
@@ -17,7 +17,7 @@ var DinnerModel = function() {
 	var filterKeyword = '';
 
 	//Stores the id of current concerning dish
-	var currentDish = 100;
+	var currentDish = 1;
 
 	//Writes the number of guests
 	this.setNumberOfGuests = function(num) {

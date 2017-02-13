@@ -4,8 +4,6 @@ var PreparationView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
 
-    container.hide();
-
   	var that = this;
 
     var imgPath = 'images/';
@@ -13,6 +11,7 @@ var PreparationView = function (container, model) {
     this.preparationList = container.find('#preparation');
 
     var popPreparationList = function(menu) {
+        that.preparationList.html('');
         for(i = 0; i < menu.length; i++){
             var divAll = $('<div class="col-md-12">');
 

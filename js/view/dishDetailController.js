@@ -10,7 +10,6 @@ var DishDetailController = function (view, model) {
 		else {
 			model.addDishToMenu(model.getCurrentDishId());
 		}
-		console.log(model.getFullMenuInId());
 	});
 
 	view.goBackButton.click(function() {
