@@ -3,8 +3,9 @@ var HomeView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
-  	
-	this.newDinner = container.find('#newDinner');
-	this.currentContainer = container;  	
+  	container.hide();
+
+	this.newDinnerButton = container.find('#newDinnerButton');
+	
 }
 

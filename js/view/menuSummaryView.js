@@ -3,11 +3,16 @@ var MenuSummaryView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
+  	container.hide();
+  	
   	var that = this;
 
+	var imgPath = 'images/';
+
+	this.fullRecipeButton = container.find('#fullRecipeButton');
+	
 	//Where the menu summary locates.
 	this.divAll = container.find('#menuSummary');
-	var imgPath = 'images/';
 	var popMenuSummary = function(menu) {
 		that.divAll.html('');
 		for (i = 0; i < menu.length; i++){		
