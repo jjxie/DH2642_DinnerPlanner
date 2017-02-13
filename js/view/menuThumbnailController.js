@@ -7,14 +7,14 @@ var MenuThumbnailController = function (view, model) {
 		model.setFilterKeyword(view.filterKeyword.val());
 	});
 
-	for(key in view.allPanels) {
-		view.allPanels[key].click(function() {
-			view.allPanels[key].html('hello');
-			//model.setCurrentDish(view.allPanels[key]);
-			//$('#menuThumbnailView').hide();    		
-			//$('#dishDetailView').show();
-		})
-	}
+	view.divAll.on('click', ':button', function(){
+		model.setCurrentDishId(this.id);
+		$('#menuThumbnailView').hide();
+		$('#dishDetailView').show();
+	});
 
+	view.searchType.change(function(){
+		model.setFilterKeyword(view.filterKeyword.val());
+		model.setSearchType(view.searchType.val());
+	});
 }
-
