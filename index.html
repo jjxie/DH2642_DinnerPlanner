@@ -11,11 +11,11 @@
 
 </head>
 
-<body style="background-image: url('bg.jpg'); background-size: cover; overflow: hidden;">
+<body style="background-image: url('bg.jpg'); height:100%; background-size: cover;">
 
 	<!-- Heading panel {All pages} -->
 	<div >
-		<div id="headingPanel"  class="col-md-12" style="height: 12vh; background-color: rgba(48,48,48,0.9);">
+		<div id="headingPanel"  class="col-md-12" style="background-color: rgba(48,48,48,0.9);">
 			<div class="col-md-3 panel-body text-center" ><h1 style="color: white;">HOMELETTE</h1></div>
 			<div class="col-md-9 panel-body"><br></br><p><em style="color: white;">From the best chefs in the world directly into your kitchen</em></p></div>
 		</div>
@@ -42,7 +42,7 @@
 
 	<!-- * * * * * * Menu list view {Select menu page; dish detail page} * * * * * * -->
 	<!-- list of selected menu on the left -->
-	<div id="menuListView" class="col-md-3 panel-body" style=" height: 88vh; background-color: rgba(247,232,218,0.7); display: none;">
+	<div id="menuListView" class="col-md-3 panel-body" style=" max-height: 650px; background-color: rgba(247,232,218,0.7); display: none;">
 
 		<h4>My Dinner</h4>
 
@@ -64,7 +64,7 @@
 			</div>
 		</div>
 
-		<div id="selectedDish" class="panel-header" style="height: 50vh; width: 100%; overflow: auto;">
+		<div id="selectedDish" class="panel-header" style=" max-height: 350px; width: 100%; overflow: auto;">
 			<table class="table">
 				<thead>
 					<tr>
@@ -82,8 +82,8 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="col-md-8"></th>
-						<th class="col-md-4"></th>
+						<th class="col-md-5"></th>
+						<th class="col-md-2"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -104,7 +104,7 @@
 
 	<!-- * * * * * * Menu thumbnail view {Select menu page} * * * * * * -->
 	<!--Thumbnails of dishes on the right-->
-	<div id="menuThumbnailView" class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.8); height: 88vh;display: none;">
+	<div id="menuThumbnailView" class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.8); max-height: 650px; display: none;">
 		<div class="col-md-12 panel-header">
 			<h4>Select Dishes</h4>
 		</div>
@@ -123,14 +123,14 @@
 				<option value="dessert">Dessert</option>
 			</select>
 		</div>
-		<div id="menu" class="row" style="overflow: auto; height: 65vh; width: 100%; ">
+		<div id="menu" class="row" style="overflow: auto; max-height: 478px; width: 100%; ">
 			<!-- Where the search results locates. -->
 		</div>
 	</div>
 
 	<!-- * * * * * * Dish detail view {Dish detail page} * * * * * * -->
 	<!--detailed info of a dish on the right-->
-	<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8); display: none;">
+	<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8); max-height:650px; overflow: auto; display: none;">
 
 		<!--thumbnail-->
 		<div class="col-md-6 panel-group">	
@@ -181,8 +181,8 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th class="col-md-8"></th>
-							<th class="col-md-2"></th>
+							<th class="col-md-9"></th>
+							<th class="col-md-1"></th>
 							<th class="col-md-2"></th>
 						</tr>
 					</thead>
@@ -228,7 +228,7 @@
 
 	<!-- * * * * * * Menu summary view {Overview page} * * * * * * -->
 	<!-- the summary of dinner menu on the bottom -->
-	<div id="menuSummaryView" class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8); overflow: auto; height: 75vh; display: none;">
+	<div id="menuSummaryView" class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8); display: none;">
 
 		<!-- Menu summary -->
 		<div id="menuSummary" class="col-md-12 panel-body">
@@ -254,7 +254,7 @@
 
 	<!-- * * * * * * Preparation view {Preparation page} * * * * * * -->
 	<!-- the preparations on the bottom -->
-	<div id="preparationView" class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8); overflow: auto; height: 75vh; display: none;">
+	<div id="preparationView" class="col-md-12 panel-group" style="background-color:rgba(255,255,255,0.8); display: none;">
 		<div id="preparation">
 			<!-- Where the preparation panel locates. -->
 		</div>
