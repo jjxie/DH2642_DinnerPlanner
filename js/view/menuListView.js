@@ -14,6 +14,10 @@ var MenuListView = function (container, model) {
   	this.minusGuestButton = container.find("#minusGuestButton");
   	this.confirmDinnerButton = container.find('#confirmDinnerButton');
 
+  	//default in initial status the button should be disabled
+  	confirmDinnerButton.disabled = true;
+
+
 	// create rows for menu list 
 	var tableBody = container.find('#selectedDish tbody');
 	var popMenuList = function(menu){
@@ -32,6 +36,15 @@ var MenuListView = function (container, model) {
 			tr.append(tdPrice);
 
 			tableBody.append(tr);
+		}
+	}
+
+	var confirmButtonStatus = function(menu){
+		if(menu.length == 0){
+			confirmDinnerButton.disabled = true;
+		}
+		else{
+			confirmDinnerButton.disabled = false;
 		}
 	}
 
@@ -54,6 +67,7 @@ var MenuListView = function (container, model) {
 		if(obj == 'menuList' || obj == 'numberOfGuests'){
 			popMenuList(model.getFullMenuInId());
 			that.totalMenuPrice.html(model.getTotalMenuPrice());
+			confirmButtonStatus(model.getFullMenuInId());
 
 		}
 	}
