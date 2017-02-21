@@ -27,10 +27,10 @@ var MenuListView = function (container, model) {
 			var tr = $('<tr>');
 
 			var tdName = $('<td>');
-			tdName.html(model.getDish(menu[i])['name']);	
+			tdName.html(model.getDishInternal(menu[i])['name']);	
 
 			var tdPrice = $('<td>');
-			tdPrice.html(model.getSinglePrice(menu[i])*model.getNumberOfGuests());
+			tdPrice.html(model.getSinglePrice(model.getDishInternal(menu[i])) * model.getNumberOfGuests());
 
 			tr.append(tdName);
 			tr.append(tdPrice);
