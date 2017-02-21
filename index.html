@@ -42,7 +42,7 @@
 
 	<!-- * * * * * * Menu list view {Select menu page; dish detail page} * * * * * * -->
 	<!-- list of selected menu on the left -->
-	<div id="menuListView" class="col-md-3 panel-body" style=" max-height: 650px; background-color: rgba(247,232,218,0.7); display: none;">
+	<div id="menuListView" class="col-md-3 panel-body" style=" max-height: 750px; background-color: rgba(247,232,218,0.7); display: none;">
 
 		<h4>My Dinner</h4>
 
@@ -104,7 +104,7 @@
 
 	<!-- * * * * * * Menu thumbnail view {Select menu page} * * * * * * -->
 	<!--Thumbnails of dishes on the right-->
-	<div id="menuThumbnailView" class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.8); max-height: 650px; display: none;">
+	<div id="menuThumbnailView" class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.8); max-height: 750px; display: none;">
 		<div class="col-md-12 panel-header">
 			<h4>Select Dishes</h4>
 		</div>
@@ -117,10 +117,18 @@
 		</div>
 		<div class="col-md-4 panel-body">
 			<select id="searchType" class="form-control">
-				<option value="all">All Dishes</option>
-				<option value="main dish">Main</option>
-				<option value="starter">Starter</option>
+				<option value="">All</option>
+				<option value="appetizer">Appetizer</option>
+				<option value="beverage">Beverage</option>
+				<option value="bread">Bread</option>
+				<option value="breakfast">Breakfast</option>
 				<option value="dessert">Dessert</option>
+				<option value="drink">Drink</option>				
+				<option value="main course">Main course</option>
+				<option value="salad">Salad</option>
+				<option value="sauce">Sauce</option>
+				<option value="side dish">Side dish</option>
+				<option value="soup">Soup</option>
 			</select>
 		</div>
 		<div id="menu" class="row" style="overflow: auto; max-height: 478px; width: 100%; ">
@@ -130,7 +138,7 @@
 
 	<!-- * * * * * * Dish detail view {Dish detail page} * * * * * * -->
 	<!--detailed info of a dish on the right-->
-	<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8); max-height:650px; overflow: auto; display: none;">
+	<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8); max-height:750px; overflow: auto; display: none;">
 
 		<!--thumbnail-->
 		<div class="col-md-6 panel-group">	
@@ -142,7 +150,7 @@
 			<div id="dishImage" class="col-md-12 panel-body">
 				<!-- Where the dish image locates.  -->
 			</div>
-			<div id="dishDescription" class="col-md-12 panel-body">
+			<div id="dishSummary" class="col-md-12 panel-body">
 				<!-- Where the dish description locates.  -->
 			</div>
 			<div class="col-md-12 panel-body">

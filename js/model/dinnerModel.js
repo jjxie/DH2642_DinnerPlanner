@@ -3,21 +3,35 @@ var DinnerModel = function() {
 	
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
-	
+	var that = this;
 	//Stores the number of guests
 	var numberOfGuests = 1;
 
 	//Stores the id of each dish in selected menu
 	var selectedMenuById = [];
 
+	//Stores each dish of the selected menu
+	var selectedMenu = [];
+
 	//Stores the current search type
-	var searchType = "all";
+	var searchType = "";
 
 	//Stores the current filter keyword
 	var filterKeyword = '';
 
 	//Stores the id of current concerning dish
-	var currentDish = 1;
+	var currentDishId = 1;
+
+	//Stores the detail of current concerning dish
+	var currentDish = {
+		'id': 1,
+		'name': '',
+		'image': '',
+		'summary':'',
+		'ingredients': [],
+		'singlePrice': 0,
+		'preparation': []
+	};
 
 	//Writes the number of guests
 	this.setNumberOfGuests = function(num) {
@@ -58,16 +72,21 @@ var DinnerModel = function() {
 		return filterKeyword;
 	}
 
-	//Writes the current dish
+	//Writes the current dish id
 	this.setCurrentDishId = function(id) {
-		if(id != currentDish) {
-			currentDish = id;
+		if(id != currentDishId) {
+			currentDishId = id;
 			notifyObservers('currentDish');
 		}
 	}
 
-	//Returns the current dish
+	//Returns the current dish id
 	this.getCurrentDishId = function() {
+		return currentDishId;
+	}
+
+	//Returns the current dish
+	this.getCurrentDish = function() {
 		return currentDish;
 	}
 
@@ -103,44 +122,120 @@ var DinnerModel = function() {
 	// 	return searchResult;
 	// }
 
-	this.getAllDishesInId = function(type, filter) {
-		var searchResultsInId = [];	
-		if (type == 'all'){
-			var all = ['starter', 'main dish', 'dessert'];
-			for (key in all){
-				var temp = this.getAllDishesInId(all[key],filter);
-				for (i = 0; i < temp.length; i ++){
-					searchResultsInId.push(temp[i]);
-				}
-			}
-		}
-		var searchResults = dishes.filter(function(dish) {
-			var found = true;
-			if(filter){
-				found = false;
-				dish.ingredients.forEach(function(ingredient) {
-					if(ingredient.name.indexOf(filter)!=-1) {
-						found = true;
-					}
-				});
-				if(dish.name.indexOf(filter) != -1)
-				{
-					found = true;
-				}
-			}
-			return dish.type == type && found;
-		}); 
-		for (key in searchResults){
-			searchResultsInId.push(searchResults[key].id);
-		}
+	this.getAllDishesInId = function(type, filter, callback, callbackErr) {
+		// var searchResultsInId = [];	
+		// if (type == 'all'){
+		// 	var all = ['starter', 'main dish', 'dessert'];
+		// 	for (key in all){
+		// 		var temp = this.getAllDishesInId(all[key],filter);
+		// 		for (i = 0; i < temp.length; i ++){
+		// 			searchResultsInId.push(temp[i]);
+		// 		}
+		// 	}
+		// }
+		// var searchResults = dishes.filter(function(dish) {
+		// 	var found = true;
+		// 	if(filter){
+		// 		found = false;
+		// 		dish.ingredients.forEach(function(ingredient) {
+		// 			if(ingredient.name.indexOf(filter)!=-1) {
+		// 				found = true;
+		// 			}
+		// 		});
+		// 		if(dish.name.indexOf(filter) != -1)
+		// 		{
+		// 			found = true;
+		// 		}
+		// 	}
+		// 	return dish.type == type && found;
+		// }); 
+		// for (key in searchResults){
+		// 	searchResultsInId.push(searchResults[key].id);
+		// }
 
-		return searchResultsInId;
+		// return searchResultsInId;
+
+		//API request: Search Recipes
+		$.ajax( {
+			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',
+			dataType: 'json',
+			cache: false,
+			type: 'GET',
+			headers: {
+				'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+			},
+			data: {
+				query: filter,
+				type: type,
+				number: 12,
+			},
+			success: function(data) {
+				callback(data['baseUri'], data['results']);
+			},
+			error: function(data) {
+				callbackErr();
+			},
+		}); 
 	}
-	//function that returns a dish of specific ID
-	this.getDish = function(id) {
-		for(key in dishes){
-			if(dishes[key].id == id) {
+	
+	//Retrieve a dish by ID and set it as current dish
+	this.getDishExternal = function(id, callback, callbackErrInfo, callbackErrSum) {
+
+		//API request: Get Recipe Information
+		$.ajax( {
+			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+id+'/information',
+			dataType: 'json',
+			cache: false,
+			type: 'GET',
+			headers: {
+				'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+			},
+			data: {
+				includeNutrition: false,
+			},
+			success: function(data) {
+				currentDish.id = data.id;
+				currentDish.name = data.title;
+				currentDish.image = data.image;
+				currentDish.ingredients = data.extendedIngredients;
+				currentDish.singlePrice = that.getSinglePrice(data);
+				// callback(data);
+				//API request: Summarize Recipe
+				$.ajax( {
+					url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+id+'/summary',
+					dataType: 'json',
+					cache: false,
+					type: 'GET',
+					headers: {
+						'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+					},
+					success: function(result) {
+						currentDish.summary = data.summary;
+						that.setCurrentDishId(data.id);
+						callback(result);
+					},
+					error: function(result) {
+						callbackErrSum();
+					},
+				}); 
+			},
+			error: function(data) {
+				callbackErrInfo();
+			},
+			complete: function() {
+
+			}
+		}); 
+	}
+
+	//Returns a dish from the selected menu
+	this.getDishInternal = function(id) {
+		for(key in selectedMenu){
+			if(selectedMenu[key].id == id) {
 				return dishes[key];
+			}
+			else{
+				alert("Error: no match found.");
 			}
 		}
 	}
@@ -160,11 +255,11 @@ var DinnerModel = function() {
 	}
 
 	//Returns the single price of dish
-	this.getSinglePrice = function(id) {
-		var ingredients = this.getIngredients(id);
+	this.getSinglePrice = function(data) {
+		var ingredients = data.extendedIngredients;
 		var singlePrice = 0;
 		for (key in ingredients){
-			singlePrice += ingredients[key]["price"]; 
+			singlePrice += ingredients[key]["amount"] * 1; 
 		}
 		return singlePrice;
 	}
@@ -195,34 +290,40 @@ var DinnerModel = function() {
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		var singleMenuPrice = 0;
-		for (key in selectedMenuById){
-			singleMenuPrice += this.getSinglePrice(selectedMenuById[key]); 
+		for (key in selectedMenu){
+			singleMenuPrice += this.getSinglePrice(selectedMenu[key]); 
 		}
 		return singleMenuPrice * numberOfGuests;
 	}
 
-	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
-	//it is removed from the menu and the new one added.
+	//Adds the current dish to the menu.
 	this.addDishToMenu = function(id) {
-		selectedMenuById.push(id);
-		selectedMenuById.sort();
-		notifyObservers('menuList');
+		if ((id == currentDishId) && !(that.isOnMenu(id))){
+			selectedMenuById.push(id);
+			selectedMenuById.sort();
+			selectedMenu.push(currentDish);
+			notifyObservers('menuList');	
+		}
 	}
 
-	//Removes dish from menu
+	//Removes the current dish from the menu.
 	this.removeDishFromMenu = function(id) {
-		selectedMenuById.splice(selectedMenuById.indexOf(id),1);
-		notifyObservers('menuList');
+		if ((id == currentDishId) && (that.isOnMenu(id))){
+			selectedMenuById.splice(selectedMenuById.indexOf(id), 1);
+			for (dishNo = 0; dishNo < selectedMenu.length; dishNo++){
+				if (id == selectedMenu[dishNo].id){
+					selectedMenu.splice(dishNo, 1);
+				}
+			}
+			notifyObservers('menuList');	
+		}
 	}
 	
 	//Returns if the current dish is on the menu.
-	this.isOnMenu = function() {
+	this.isOnMenu = function(id) {
 		var yes = false;
-		for(j = 0; j < selectedMenuById.length; j++) {
-			if(currentDish == selectedMenuById[j]) {
-				yes = true;
-				break;
-			}
+		if(selectedMenuById.indexOf(id) != -1) {
+			yes = true;
 		}
 		return yes;
 	}

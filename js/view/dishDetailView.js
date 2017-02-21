@@ -3,10 +3,9 @@ var DishDetailView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
-  	
-  	var that = this;
+  	//model.getCurrentDish();
 
-  	var imgPath = 'images/'
+  	var that = this;
   	
   	this.goBackButton = container.find('#goBackButton');
   	
@@ -21,15 +20,17 @@ var DishDetailView = function (container, model) {
   	var popImage = function(dish) {
   		that.dishImage.html('');
   		jQuery('<img/>', {
-  			src: imgPath.concat(dish.image),
-  			alt: dish.name,
+  			src: dish.image,
+  			alt: dish.title,
+  			class: "img-responsive",
+  			style: "width:100%; height:300px",
   		}).appendTo(that.dishImage);
   	}
 
-  	//Where the dish description locates.
-  	this.dishDescription = container.find('#dishDescription');
-  	var popDescription = function(dish) {
-  		that.dishDescription.html(dish.description);
+  	//Where the dish summary locates.
+  	this.dishSummary = container.find('#dishSummary');
+  	var popSummary = function(dish) {
+  		that.dishSummary.html(dish.summary);
   	}
 
   	//Where the number of guests locates.
@@ -46,7 +47,7 @@ var DishDetailView = function (container, model) {
 			var ingredient = dish.ingredients[i];
 			var tr = $('<tr>');
 			var tdQuantity = $('<td>');
-			tdQuantity.html([(ingredient.quantity * model.getNumberOfGuests()).toFixed(2), ingredient.unit].join(' '));
+			tdQuantity.html([(ingredient.amount * model.getNumberOfGuests()).toFixed(2), ingredient.unit].join(' '));
 			tr.append(tdQuantity); 
 			var tdName = $('<td>'); 
 			tdName.html(ingredient.name);
@@ -55,7 +56,7 @@ var DishDetailView = function (container, model) {
 			tdCurrency.html("SEK");
 			tr.append(tdCurrency);
 			var tdPrice = $('<td>');
-			tdPrice.html(ingredient.price * model.getNumberOfGuests());
+			tdPrice.html(ingredient.amount * 1 * model.getNumberOfGuests());
 			tr.append(tdPrice);
 			that.dishIngredients.append(tr);
 		}
@@ -66,7 +67,7 @@ var DishDetailView = function (container, model) {
 	this.setDishButton = container.find('#setDishButton');
 	
 	var popSetDishButton = function() {
-		if(model.isOnMenu()) {
+		if(model.isOnMenu(model.getCurrentDishId())) {
 			that.setDishButton.html('Remove this dish');
 		}
 		else {
@@ -79,34 +80,32 @@ var DishDetailView = function (container, model) {
 	//Now it's just dish preparation since there is no preparation in data
 	this.dishPreparation = container.find('#dishPreparation');
 	var popPreparation = function(dish) {
-		that.dishPreparation.html(dish.description);
+		that.dishPreparation.html(dish.preparation);
 	}
 
 	var popDish = function(dish) {
 		popName(dish);
 		popImage(dish);
 		popIngredientsList(dish);
-		popDescription(dish);
 		popPreparation(dish);
+		popSetDishButton();
+		popSummary(dish);
 	}
-
-	popDish(model.getDish(model.getCurrentDishId()));
-	popSetDishButton();
 	
 	//Registers observer.
 	model.addObserver(this);
 
 	//Updates this view when being called.
 	this.update = function(obj){
-		if(obj == 'numberOfGuests'){
-			popIngredientsList(model.getDish(model.getCurrentDishId()));
+		console.log(model.getCurrentDish());
+		if(obj == 'numberOfGuests' || 'all'){
+			popIngredientsList(model.getCurrentDish());
 			that.numberOfGuestsO.html(model.getNumberOfGuests());
 		}
-		if(obj == 'currentDish'){
-			popDish(model.getDish(model.getCurrentDishId()));
-			popSetDishButton();
+		if(obj == 'currentDish' || 'all'){
+			popDish(model.getCurrentDish());
 		}
-		if(obj == 'menuList'){
+		if(obj == 'menuList' || 'all'){
 			popSetDishButton();
 		}
 	}
