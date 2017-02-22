@@ -180,7 +180,8 @@ var DinnerModel = function() {
 	
 	//Retrieve a dish by ID and set it as current dish
 	this.getDishExternal = function(id, callback, callbackErrInfo, callbackErrSum) {
-
+			console.log("entry");
+						console.log(that.getFullMenu());
 		//API request: Get Recipe Information
 		$.ajax( {
 			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+id+'/information',
@@ -194,11 +195,14 @@ var DinnerModel = function() {
 				includeNutrition: false,
 			},
 			success: function(data) {
+				console.log("success entry");
+						console.log(that.getFullMenu());
 				currentDish.id = data.id;
 				currentDish.name = data.title;
 				currentDish.image = data.image;
 				currentDish.ingredients = data.extendedIngredients;
 				currentDish.singlePrice = that.getSinglePrice(data);
+				currentDish.preparation = data.instructions;
 				// callback(data);
 				//API request: Summarize Recipe
 				$.ajax( {
@@ -210,14 +214,20 @@ var DinnerModel = function() {
 						'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
 					},
 					success: function(result) {
-						currentDish.summary = data.summary;
-						that.setCurrentDishId(data.id);
+						console.log("second success entry");
+						console.log(that.getFullMenu());
+						currentDish.summary = result.summary;
+						that.setCurrentDishId(result.id);
 						callback(result);
+						console.log("second success exit");
+						console.log(that.getFullMenu());
 					},
 					error: function(result) {
 						callbackErrSum();
 					},
 				}); 
+				console.log("first success exit");
+				console.log(that.getFullMenu());	
 			},
 			error: function(data) {
 				callbackErrInfo();
@@ -226,6 +236,7 @@ var DinnerModel = function() {
 
 			}
 		}); 
+
 	}
 
 	//Returns a dish from the selected menu
@@ -250,7 +261,7 @@ var DinnerModel = function() {
 	
 	//Returns the ingredients of one dish
 	this.getIngredients = function(id) {
-		var theDish = this.getDish(id);
+		var theDish = this.getDishInternal(id);
 		return theDish.ingredients;
 	}
 
@@ -271,11 +282,7 @@ var DinnerModel = function() {
 
 	//Returns all the dishes on the menu
 	this.getFullMenu = function() {
-		var fullMenu = [];
-		for (key in selectedMenuById){
-			fullMenu.push(this.getDish(selectedMenuById[key]));
-		}
-		return fullMenu;
+		return selectedMenu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
@@ -300,8 +307,17 @@ var DinnerModel = function() {
 	this.addDishToMenu = function(id) {
 		if ((id == currentDishId) && !(that.isOnMenu(id))){
 			selectedMenuById.push(id);
-			selectedMenuById.sort();
+			console.log('before push')
+			console.log(currentDish);
+			console.log(id);
+			console.log(selectedMenuById);
+			console.log(selectedMenu);
 			selectedMenu.push(currentDish);
+			console.log('after push')
+			console.log(selectedMenu);
+			console.log(id);
+			console.log(currentDish);
+
 			notifyObservers('menuList');	
 		}
 	}

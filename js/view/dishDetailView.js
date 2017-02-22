@@ -23,7 +23,7 @@ var DishDetailView = function (container, model) {
   			src: dish.image,
   			alt: dish.title,
   			class: "img-responsive",
-  			style: "width:100%; height:300px",
+  			style: "width:100%; height:350px",
   		}).appendTo(that.dishImage);
   	}
 
@@ -60,7 +60,7 @@ var DishDetailView = function (container, model) {
 			tr.append(tdPrice);
 			that.dishIngredients.append(tr);
 		}
-		that.dishPrice.html(model.getSinglePrice(dish.id) * model.getNumberOfGuests());
+		that.dishPrice.html(dish.singlePrice * model.getNumberOfGuests());
 	}
 
 	//The button to add/delete the dish to/from the menu.
@@ -97,7 +97,6 @@ var DishDetailView = function (container, model) {
 
 	//Updates this view when being called.
 	this.update = function(obj){
-		console.log(model.getCurrentDish());
 		if(obj == 'numberOfGuests' || 'all'){
 			popIngredientsList(model.getCurrentDish());
 			that.numberOfGuestsO.html(model.getNumberOfGuests());

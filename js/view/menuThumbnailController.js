@@ -8,13 +8,14 @@ var MenuThumbnailController = function (view, model) {
 	});
 
 	view.divAll.on('click', ':button', function(){
-		console.log(this.id);
+		console.log("buton");
+		console.log(model.getCurrentDish());
+		console.log(model.getFullMenu());
 		model.getDishExternal(this.id, function(){
 			$('#menuThumbnailView').hide();
 			//view.update('all')
 			$('#dishDetailView').show();
 		});
-		console.log(model.getCurrentDish());
 	});
 
 	view.searchType.change(function(){

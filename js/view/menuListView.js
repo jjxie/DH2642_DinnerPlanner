@@ -27,10 +27,10 @@ var MenuListView = function (container, model) {
 			var tr = $('<tr>');
 
 			var tdName = $('<td>');
-			tdName.html(model.getDishInternal(menu[i])['name']);	
+			tdName.html(menu[i].name);	
 
 			var tdPrice = $('<td>');
-			tdPrice.html(model.getSinglePrice(model.getDishInternal(menu[i])) * model.getNumberOfGuests());
+			tdPrice.html(menu[i].singlePrice * model.getNumberOfGuests());
 
 			tr.append(tdName);
 			tr.append(tdPrice);
@@ -49,7 +49,7 @@ var MenuListView = function (container, model) {
 	}
 
 	//Load the menu list first.
-	popMenuList(model.getFullMenuInId());
+	popMenuList(model.getFullMenu());
 
 	//Displays the total menu price.
 	this.totalMenuPrice = container.find('#totalMenuPrice');
@@ -65,7 +65,9 @@ var MenuListView = function (container, model) {
 			that.totalMenuPrice.html(model.getTotalMenuPrice());
 		}
 		if(obj == 'menuList' || obj == 'numberOfGuests'){
-			popMenuList(model.getFullMenuInId());
+			popMenuList(model.getFullMenu());
+			console.log('after refresh');
+			console.log(model.getFullMenu());
 			that.totalMenuPrice.html(model.getTotalMenuPrice());
 			confirmButtonStatus(model.getFullMenuInId());
 

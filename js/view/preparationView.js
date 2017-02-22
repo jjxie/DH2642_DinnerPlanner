@@ -5,8 +5,6 @@ var PreparationView = function (container, model) {
   	// and/or ones that responed to interaction)
 
   	var that = this;
-
-    var imgPath = 'images/';
     
     this.preparationList = container.find('#preparation');
 
@@ -20,7 +18,7 @@ var PreparationView = function (container, model) {
 
             var divImage = $('<div class="col-md-2 panel-body">');
             jQuery('<img/>', {
-                src: imgPath.concat(menu[i].image),
+                src: menu[i].image,
                 alt: menu[i].name,
                 style: "width:100%; height:150px",
             }).appendTo(divImage);
@@ -31,7 +29,7 @@ var PreparationView = function (container, model) {
             var dishName = $('<div style="font-size: x-large; font-weight: bold;">');
             var dishDescription = $('<div>');
             dishName.html(menu[i].name);
-            dishDescription.html(menu[i].description);
+            dishDescription.html(menu[i].summary);
             divDescription.append(dishName);
             divDescription.append(dishDescription);  
             divAll.append(divDescription);
@@ -42,7 +40,7 @@ var PreparationView = function (container, model) {
             var titlePreparation = $('<div>');
             var dishPreparation = $('<div>');
             titlePreparation.html("Preparation:");
-            dishPreparation.html(menu[i].description);
+            dishPreparation.html(menu[i].preparation);
             divPreparation.append(titlePreparation);
             divPreparation.append(dishPreparation);  
             divAll.append(divPreparation);
