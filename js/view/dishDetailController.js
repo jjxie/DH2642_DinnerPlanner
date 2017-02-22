@@ -15,6 +15,7 @@ var DishDetailController = function (view, model) {
 	});
 
 	view.goBackButton.click(function() {
+		model.resetCurrentDish();
 		$('#dishDetailView').hide();
 		$('#menuThumbnailView').show();
 		console.log("back to menu click");

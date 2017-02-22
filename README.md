@@ -28,17 +28,18 @@ Files:
 			menuSummaryView
 			preparationView
 		controllers(2):
+			homeController
 			menuListController
 			menuThumbnailController
+			dishDetailController
+			dinnerFactsBannerController
+			menuSummaryController
+			preparationController
 	Images:
 		bg
 		etc.
 	README.md(this)
 	
-Questions 9/Feb/2017
-	1, How to adjust the background picture size?
-	2, Why the page loading is such slow?
-	3, How to align the guest number imput group?
-	4, Why imput text for searching is disabled while resized?
-	5, Need we merge the HTML files? If so, how?
-	overflow auto none
+Questions 22/Feb/2017
+	Debugging: 
+		How could variable value changes before sending the ajax request?
