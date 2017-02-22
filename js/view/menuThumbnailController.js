@@ -9,7 +9,7 @@ var MenuThumbnailController = function (view, model) {
 
 	view.divAll.on('click', ':button', function(){
 		console.log("buton");
-		console.log(model.getCurrentDish());
+		console.log(model.getCurrentDishId());
 		console.log(model.getFullMenu());
 		model.getDishExternal(this.id, function(){
 			$('#menuThumbnailView').hide();
@@ -23,3 +23,5 @@ var MenuThumbnailController = function (view, model) {
 		model.setSearchType(view.searchType.val());
 	});
 }
+
+//eliaslo@kth.se

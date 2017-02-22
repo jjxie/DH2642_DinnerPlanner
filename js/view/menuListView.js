@@ -63,6 +63,7 @@ var MenuListView = function (container, model) {
 		if(obj == 'numberOfGuests'){
 			that.numberOfGuestsI.val(model.getNumberOfGuests());
 			that.totalMenuPrice.html(model.getTotalMenuPrice());
+			console.log('price' + model.getTotalMenuPrice());
 		}
 		if(obj == 'menuList' || obj == 'numberOfGuests'){
 			popMenuList(model.getFullMenu());
