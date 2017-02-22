@@ -2,14 +2,27 @@
 var MenuThumbnailView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
-  	// and/or ones that responed to interaction)
+  // and/or ones that responed to interaction)
+
+  // Tooltip:
+  $(document).on('mouseenter', ".tool", function () {
+     var $this = $(this);
+     if (this.offsetWidth < this.scrollWidth && !$this.attr('title')) {
+       $this.tooltip({
+         title: $this.text(),
+         placement: "bottom"
+     });
+       $this.tooltip('show');
+   }
+});
 
 
-  	var that = this;
 
-  	this.filterKeyword = container.find('#filterKeyword');
-  	this.searchType = container.find('#searchType');
-  	this.searchButton = container.find('#searchButton');
+  var that = this;
+
+  this.filterKeyword = container.find('#filterKeyword');
+  this.searchType = container.find('#searchType');
+  this.searchButton = container.find('#searchButton');
 
   	// Where the search results locates.
   	this.divAll = container.find('#menu');
@@ -42,13 +55,8 @@ var MenuThumbnailView = function (container, model) {
             }).appendTo(divImage);
             divPanel.append(divImage);
 
-            var name = $('<div class="panel-heading" data-toggle="tooltip" data-placement="bottom">');
-            if (menu[i].title.length > 35){
-            	name.html(menu[i].title.substring(0,35).concat('...'));
-            }
-            else{
+            var name = $('<div class="tool panel-heading">');
             	name.html(menu[i].title);
-            }
             divPanel.append(name);
 
             var time = $('<div class="panel-footer">');
@@ -62,8 +70,8 @@ var MenuThumbnailView = function (container, model) {
 
 	//Loads the view first.
   //model.getAllDishesInId(model.getSearchType(), model.getFilterKeyword(), this.popSearchResultList /*, callbackErr */);
-	this.filterKeyword.val(model.getFilterKeyword());
-	this.searchType.val(model.getSearchType());
+  this.filterKeyword.val(model.getFilterKeyword());
+  this.searchType.val(model.getSearchType());
 
     //Registers observer.
     model.addObserver(this);
