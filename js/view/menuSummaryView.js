@@ -31,7 +31,7 @@ var MenuSummaryView = function (container, model) {
 			divPanel.append(dishName);
 
 			var dishPrice = $('<div class="panel-footer" style="text-align: right">');
-			dishPrice.html(dish.singlePrice * model.getNumberOfGuests() + ' SEK');
+			dishPrice.html((dish.singlePrice * model.getNumberOfGuests()).toFixed(2) + ' SEK');
 			divPanel.append(dishPrice);
 
 			div.append(divPanel);
@@ -41,7 +41,7 @@ var MenuSummaryView = function (container, model) {
 	popMenuSummary(model.getFullMenu());
 
 	this.totalPrice = container.find('#totalPrice');
-	this.totalPrice.html(model.getTotalMenuPrice());
+	this.totalPrice.html((model.getTotalMenuPrice()).toFixed(2));
 
 	//Registers observer.
 	model.addObserver(this);
@@ -50,7 +50,7 @@ var MenuSummaryView = function (container, model) {
 	this.update = function(obj){
 		if(obj == 'menuList' || obj == 'numberOfGuests'){
 			popMenuSummary(model.getFullMenu());
-			that.totalPrice.html(model.getTotalMenuPrice());
+			that.totalPrice.html((model.getTotalMenuPrice()).toFixed(2));
 		}
 	}
 

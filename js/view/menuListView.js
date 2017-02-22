@@ -30,7 +30,7 @@ var MenuListView = function (container, model) {
 			tdName.html(menu[i].name);	
 
 			var tdPrice = $('<td>');
-			tdPrice.html(menu[i].singlePrice * model.getNumberOfGuests());
+			tdPrice.html((menu[i].singlePrice * model.getNumberOfGuests()).toFixed(2));
 
 			tr.append(tdName);
 			tr.append(tdPrice);
@@ -53,7 +53,7 @@ var MenuListView = function (container, model) {
 
 	//Displays the total menu price.
 	this.totalMenuPrice = container.find('#totalMenuPrice');
-	this.totalMenuPrice.html(model.getTotalMenuPrice());
+	this.totalMenuPrice.html((model.getTotalMenuPrice()).toFixed(2));
 	
 	//Registers observer.
 	model.addObserver(this);
@@ -63,13 +63,10 @@ var MenuListView = function (container, model) {
 		if(obj == 'numberOfGuests'){
 			that.numberOfGuestsI.val(model.getNumberOfGuests());
 			that.totalMenuPrice.html(model.getTotalMenuPrice());
-			console.log('price' + model.getTotalMenuPrice());
 		}
 		if(obj == 'menuList' || obj == 'numberOfGuests'){
 			popMenuList(model.getFullMenu());
-			console.log('after refresh');
-			console.log(model.getFullMenu());
-			that.totalMenuPrice.html(model.getTotalMenuPrice());
+			that.totalMenuPrice.html((model.getTotalMenuPrice()).toFixed(2));
 			confirmButtonStatus(model.getFullMenuInId());
 
 		}

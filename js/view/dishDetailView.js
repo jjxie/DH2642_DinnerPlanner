@@ -56,11 +56,11 @@ var DishDetailView = function (container, model) {
 			tdCurrency.html("SEK");
 			tr.append(tdCurrency);
 			var tdPrice = $('<td>');
-			tdPrice.html(ingredient.amount * 1 * model.getNumberOfGuests());
+			tdPrice.html((ingredient.amount * 1 * model.getNumberOfGuests()).toFixed(2));
 			tr.append(tdPrice);
 			that.dishIngredients.append(tr);
 		}
-		that.dishPrice.html(dish.singlePrice * model.getNumberOfGuests());
+		that.dishPrice.html((dish.singlePrice * model.getNumberOfGuests()).toFixed(2));
 	}
 
 	//The button to add/delete the dish to/from the menu.

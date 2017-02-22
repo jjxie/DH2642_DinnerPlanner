@@ -9,10 +9,48 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
+	<!-- For tooltips. -->
+	<style type="text/css">
+		.tool {
+			width: 270px;
+			overflow:hidden;
+			white-space:nowrap;
+			text-overflow:ellipsis;
+		}
+	</style>
+	<!-- For loading widgets. -->
+	<style type="text/css">
+	/* Start by setting display:none to make this hidden. 
+	Then we position it in relation to the viewport window with position:fixed. 
+	Width, height, top and left speak for themselves. 
+	Background we set to 80% white with our animation centered, and no-repeating */
+	.modal {
+		display:    none;
+		position:   fixed;
+		z-index:    1000;
+		top:        0;
+		left:       0;
+		height:     100%;
+		width:      100%;
+		background: rgba( 255, 255, 255, .8 ) 
+		url('http://i.stack.imgur.com/FhHRx.gif') 
+		50% 50% 
+		no-repeat;
+	}
+
+	/* When the body has the loading class, we turn the scrollbar off with overflow:hidden */
+	body.loading {
+		overflow: hidden;   
+	}
+
+	/* Anytime the body has the loading class, our modal element will be visible */
+	body.loading .modal {
+		display: block;
+	}
+</style>
 </head>
 
 <body style="background-image: url('bg.jpg'); height:100%; background-size: cover;">
-
 	<!-- Heading panel {All pages} -->
 	<div >
 		<div id="headingPanel"  class="col-md-12" style="background-color: rgba(48,48,48,0.9);">
@@ -64,7 +102,7 @@
 			</div>
 		</div>
 
-		<div id="selectedDish" class="panel-header" style=" max-height: 350px; width: 100%; overflow: auto;">
+		<div id="selectedDish" class="panel-header" style=" max-height: 450px; width: 100%; overflow: auto;">
 			<table class="table">
 				<thead>
 					<tr>
@@ -131,7 +169,7 @@
 				<option value="soup">Soup</option>
 			</select>
 		</div>
-		<div id="menu" class="row" style="overflow: auto; max-height: 478px; width: 100%; ">
+		<div id="menu" class="row" style="overflow: auto; max-height: 625px; width: 100%; ">
 			<!-- Where the search results locates. -->
 		</div>
 	</div>
@@ -268,12 +306,21 @@
 		</div>
 	</div>
 
+	<!-- Loading widget. -->
+	<div class="modal"><!-- Place at bottom of page --></div>
 
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
+	<!-- For loading widget. -->
+	<script type="text/javascript">
+		$body = $("body");
+		$(document).on({
+			ajaxStart: function() { $body.addClass("loading");    },
+			ajaxStop: function() { $body.removeClass("loading"); }    
+		});
+	</script>
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
 	<!-- Model -->
