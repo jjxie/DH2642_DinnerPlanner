@@ -20,8 +20,6 @@ var MenuListController = function (view, model) {
         $('#dishDetailView').hide();
         $('#dinnerFactsBannerView').show();
         $('#menuSummaryView').show();
-        model.setSearchType('all');
-        model.setFilterKeyword('');
     });
 }
 
