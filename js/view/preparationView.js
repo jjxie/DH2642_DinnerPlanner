@@ -37,7 +37,7 @@ var PreparationView = function (container, model) {
 
 
             var divPreparation = $('<div class="col-md-4 panel-body">');
-            var titlePreparation = $('<div>');
+            var titlePreparation = $('<div style="font-size: large;">');
             var dishPreparation = $('<div>');
             titlePreparation.html("Preparation:");
             dishPreparation.html(menu[i].preparation);

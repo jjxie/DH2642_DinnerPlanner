@@ -9,6 +9,8 @@ var DinnerFactsBannerController = function (view, model) {
         $('#preparationView').hide();
         $('#menuListView').show();
         $('#menuThumbnailView').show();
-  	});
-  }
+        model.setSearchType('all');
+        model.setFilterKeyword('');
+    });
+}
 

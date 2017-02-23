@@ -14,7 +14,7 @@ var DinnerModel = function() {
 	var selectedMenu = [];
 
 	//Stores the current search type
-	var searchType = "";
+	var searchType = "all";
 
 	//Stores the current filter keyword
 	var filterKeyword = '';
@@ -172,13 +172,13 @@ var DinnerModel = function() {
 			data: {
 				query: filter,
 				type: type,
-				number: 12,
+				number: 18,
 			},
 			success: function(data) {
 				callback(data['baseUri'], data['results']);
 			},
 			error: function(data) {
-				callbackErr();
+				// callbackErr();
 			},
 		}); 
 	}
@@ -228,14 +228,14 @@ var DinnerModel = function() {
 						// console.log(that.getFullMenu());
 					},
 					error: function(result) {
-						callbackErrSum();
+						// callbackErrSum();
 					},
 				}); 
 				// console.log("first success exit");
 				// console.log(that.getFullMenu());	
 			},
 			error: function(data) {
-				callbackErrInfo();
+				// callbackErrInfo();
 			},
 			complete: function() {
 

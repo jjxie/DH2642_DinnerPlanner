@@ -26,7 +26,7 @@ var MenuSummaryView = function (container, model) {
 			}).appendTo(divImage);
 			divPanel.append(divImage);
 
-			var dishName = $('<div class="panel-heading">');
+			var dishName = $('<div class="tool panel-heading">');
 			dishName.html(dish.name);
 			divPanel.append(dishName);
 

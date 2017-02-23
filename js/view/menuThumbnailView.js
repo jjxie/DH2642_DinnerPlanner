@@ -2,27 +2,17 @@
 var MenuThumbnailView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
-  // and/or ones that responed to interaction)
-
-  // Tooltip:
-  $(document).on('mouseenter', ".tool", function () {
-     var $this = $(this);
-     if (this.offsetWidth < this.scrollWidth && !$this.attr('title')) {
-       $this.tooltip({
-         title: $this.text(),
-         placement: "bottom"
-     });
-       $this.tooltip('show');
-   }
-});
+    // and/or ones that responed to interaction)
 
 
 
-  var that = this;
 
-  this.filterKeyword = container.find('#filterKeyword');
-  this.searchType = container.find('#searchType');
-  this.searchButton = container.find('#searchButton');
+
+    var that = this;
+
+    this.filterKeyword = container.find('#filterKeyword');
+    this.searchType = container.find('#searchType');
+    this.searchButton = container.find('#searchButton');
 
   	// Where the search results locates.
   	this.divAll = container.find('#menu');
@@ -56,7 +46,7 @@ var MenuThumbnailView = function (container, model) {
             divPanel.append(divImage);
 
             var name = $('<div class="tool panel-heading">');
-            	name.html(menu[i].title);
+            name.html(menu[i].title);
             divPanel.append(name);
 
             var time = $('<div class="panel-footer">');
@@ -69,9 +59,9 @@ var MenuThumbnailView = function (container, model) {
     }
 
 	//Loads the view first.
-  //model.getAllDishesInId(model.getSearchType(), model.getFilterKeyword(), this.popSearchResultList /*, callbackErr */);
-  this.filterKeyword.val(model.getFilterKeyword());
-  this.searchType.val(model.getSearchType());
+    //model.getAllDishesInId(model.getSearchType(), model.getFilterKeyword(), this.popSearchResultList /*, callbackErr */);
+    this.filterKeyword.val(model.getFilterKeyword());
+    this.searchType.val(model.getSearchType());
 
     //Registers observer.
     model.addObserver(this);
@@ -82,6 +72,7 @@ var MenuThumbnailView = function (container, model) {
 			model.getAllDishesInId(model.getSearchType(), model.getFilterKeyword(), that.popSearchResultList /*, callbackErr */);
 			that.filterKeyword.val(model.getFilterKeyword());
 			that.searchType.val(model.getSearchType());
+            console.log(model.getSearchType());
 		}
 	}	
 }
